@@ -36,14 +36,13 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-
     // setting up device width and height variables [for responsiveness]
     double scr_width = MediaQuery.of(context).size.width;
     double scr_height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white12,
+        color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -66,17 +65,24 @@ class _MainPageState extends State<MainPage> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            pinned: _pinned,
-            snap: _snap,
-            floating: _floating,
-            expandedHeight: 140.0,
-            backgroundColor: Colors.white12,
-
-            flexibleSpace: const FlexibleSpaceBar(
-              title: Text('HealUp', style: TextStyle(fontSize: 30, color: Colors.red)),
+              pinned: _pinned,
+              snap: _snap,
+              floating: _floating,
+              expandedHeight: 140.0,
+              backgroundColor: Colors.white70,
+              flexibleSpace: const FlexibleSpaceBar(
+                title: Text('HealUp',
+                    style: TextStyle(fontSize: 30, color: Colors.blue)),
                 centerTitle: true,
-            ),
-          ),
+              ),
+              actions: <Widget>[
+                IconButton(
+                  color: Colors.blue,
+                  icon: const Icon(Icons.add_sharp),
+                  tooltip: 'Add new entry',
+                  onPressed: () {/* ... */},
+                ),
+              ]),
           SliverToBoxAdapter(
             child:
                 //child: Text('Your Favourite health recorder!'),
@@ -84,72 +90,188 @@ class _MainPageState extends State<MainPage> {
                 // code snippet from Abhinandan
 
                 Container(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 40.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0, vertical: 40.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Hi $name", style: TextStyle(fontSize: 28)),
+                          SizedBox(height: 10),
+                          Text("Good $day_state, how do you feel?",
+                              style: TextStyle(fontSize: 20)),
+                          SizedBox(height: 20),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Hi $name", style: TextStyle(fontSize: 28)),
-                              SizedBox(height: 10),
-                              Text("Good $day_state, how do you feel?", style: TextStyle(fontSize: 20)),
-                              SizedBox(height: 20),
-                            ],
-                          ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Happy'),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            RaisedButton(child: Text("Happy"), onPressed: () {}, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                            SizedBox(width: 5),
-                            RaisedButton(child: Text("Sad"), onPressed: () {}, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                            SizedBox(width: 5),
-                            RaisedButton(child: Text("Angry"), onPressed: () {}, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                            SizedBox(width: 5),
-                            RaisedButton(child: Text("Fatigued"), onPressed: () {}, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                          ],
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Sad'),
                         ),
-
-                        SizedBox(height: 20),
-
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Angry'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Fatigued'),
+                        ),
                       ],
                     ),
-                  ),
+                    const SizedBox(height: 20),
+                  ],
                 ),
+              ),
+            ),
 
-                // end of code
-
-
-
+            // end of code
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+              (BuildContext context, int index) {
+                return Column(
                   children: [
-                    Container(
-                      color: index.isOdd ? Colors.blue[40] : Colors.blue[80],
-                      height: 100.0,
-                      child: Center(
-                        child: Text('$index', textScaleFactor: 5),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Ideal Weight'),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20.0,
+                          height: 250.0,
+                        ),
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Body Fat'),
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      color: index.isOdd ? Colors.white : Colors.black12,
-                      height: 100.0,
-                      child: Center(
-                        child: Text('$index', textScaleFactor: 5),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Medical Records'),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20.0,
+                          height: 250.0,
+                        ),
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Water Intake'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Pregnancy due date'),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20.0,
+                          height: 250.0,
+                        ),
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Mental Health Record'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Calorie Chart'),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20.0,
+                          height: 250.0,
+                        ),
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Meditation Timer'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('BMI Calculator'),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20.0,
+                          height: 250.0,
+                        ),
+                        SizedBox(
+                          width: 175.0,
+                          height: 175.0,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Prescription Record'),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 );
               },
-              childCount: 20,
+              childCount: 1,
             ),
           ),
         ],
