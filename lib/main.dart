@@ -103,10 +103,6 @@ class _MainPageState extends State<MainPage> {
                 ]),
             SliverToBoxAdapter(
               child:
-                  //child: Text('Your Favourite health recorder!'),
-
-                  // code snippet from Abhinandan
-
                   Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 10.0, vertical: 40.0),
@@ -114,7 +110,7 @@ class _MainPageState extends State<MainPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.only(left: 20.0, right: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -123,7 +119,7 @@ class _MainPageState extends State<MainPage> {
                           const SizedBox(height: 10),
                           Text("Good $day_state, how do you feel?",
                               style: const TextStyle(fontSize: 20)),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 10),
                         ],
                       ),
                     ),
@@ -164,7 +160,7 @@ class _MainPageState extends State<MainPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 5),
                   ],
                 ),
               ),
@@ -176,10 +172,6 @@ class _MainPageState extends State<MainPage> {
                 (BuildContext context, int index) {
                   return Container(
                     margin: const EdgeInsets.all(30.0),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                      //color: Colors.black38,
-                    ),
                     child: Column(
                       children: [
                         Row(
