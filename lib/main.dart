@@ -95,7 +95,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 actions: <Widget>[
                   IconButton(
-                    color: Colors.black,
+                    color: Colors.white,
                     icon: const Icon(Icons.add_sharp),
                     tooltip: 'Add new entry',
                     onPressed: () {/* ... */},
@@ -132,18 +132,34 @@ class _MainPageState extends State<MainPage> {
                       children: [
                         ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.deepPurpleAccent, // background
+                            onPrimary: Colors.white, // foreground
+                          ),
                           child: const Text('Happy'),
                         ),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.deepPurpleAccent, // background
+                            onPrimary: Colors.white, // foreground
+                          ),
                           child: const Text('Sad'),
                         ),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.deepPurpleAccent, // background
+                            onPrimary: Colors.white, // foreground
+                          ),
                           child: const Text('Angry'),
                         ),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.deepPurpleAccent, // background
+                            onPrimary: Colors.white, // foreground
+                          ),
                           child: const Text('Fatigued'),
                         ),
                       ],
@@ -159,9 +175,10 @@ class _MainPageState extends State<MainPage> {
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   return Container(
+                    margin: const EdgeInsets.all(30.0),
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
-                      color: Colors.black38,
+                      //color: Colors.black38,
                     ),
                     child: Column(
                       children: [
@@ -169,11 +186,13 @@ class _MainPageState extends State<MainPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -183,14 +202,16 @@ class _MainPageState extends State<MainPage> {
                             ),
                             const SizedBox(
                               width: 20.0,
-                              height: 250.0,
+                              height: 200.0,
                             ),
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -204,11 +225,13 @@ class _MainPageState extends State<MainPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -218,14 +241,16 @@ class _MainPageState extends State<MainPage> {
                             ),
                             const SizedBox(
                               width: 20.0,
-                              height: 250.0,
+                              height: 200.0,
                             ),
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -239,11 +264,13 @@ class _MainPageState extends State<MainPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -253,14 +280,16 @@ class _MainPageState extends State<MainPage> {
                             ),
                             const SizedBox(
                               width: 20.0,
-                              height: 250.0,
+                              height: 200.0,
                             ),
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -274,11 +303,13 @@ class _MainPageState extends State<MainPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -288,14 +319,16 @@ class _MainPageState extends State<MainPage> {
                             ),
                             const SizedBox(
                               width: 20.0,
-                              height: 250.0,
+                              height: 200.0,
                             ),
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -309,11 +342,13 @@ class _MainPageState extends State<MainPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -323,14 +358,16 @@ class _MainPageState extends State<MainPage> {
                             ),
                             const SizedBox(
                               width: 20.0,
-                              height: 250.0,
+                              height: 200.0,
                             ),
                             SizedBox(
-                              width: 175.0,
-                              height: 175.0,
+                              width: 150.0,
+                              height: 150.0,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
+                                  primary: Colors.deepPurpleAccent,
+                                  onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
