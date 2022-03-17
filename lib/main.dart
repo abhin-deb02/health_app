@@ -65,10 +65,10 @@ class _MainPageState extends State<MainPage> {
       body: Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
-          begin: Alignment.topRight,
+          begin: Alignment.topCenter,     // changed from topLeft to topCenter
           end: Alignment.bottomLeft,
           colors: [
-            Colors.deepPurple,
+            Colors.redAccent,
             Colors.white,
           ],
         )),
@@ -77,17 +77,17 @@ class _MainPageState extends State<MainPage> {
             SliverAppBar(
                 shape: const ContinuousRectangleBorder(
                     borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(120),
-                        bottomRight: Radius.circular(120))),
+                        bottomLeft: Radius.circular(90),
+                        bottomRight: Radius.circular(90))),
                 pinned: _pinned,
                 snap: _snap,
                 floating: _floating,
-                expandedHeight: 180.0,
-                backgroundColor: Colors.black26,
+                expandedHeight: 150.0,
+                backgroundColor: Colors.black.withOpacity(0.15),
                 flexibleSpace: const FlexibleSpaceBar(
                   title: Text('HealUp',
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 25,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       )),
@@ -103,67 +103,86 @@ class _MainPageState extends State<MainPage> {
                 ]),
             SliverToBoxAdapter(
               child:
-                  Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 10.0, vertical: 40.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, right: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Hi $name",
-                              style: const TextStyle(fontSize: 28)),
-                          const SizedBox(height: 10),
-                          Text("Good $day_state, how do you feel?",
-                              style: const TextStyle(fontSize: 20)),
-                          const SizedBox(height: 10),
-                        ],
+                  ClipPath(
+                    clipper: MyClipper(),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.redAccent.withOpacity(0.15),
+                            Colors.redAccent.withOpacity(0.4),
+                          ],
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                        horizontal: scrWidth / 40, vertical: scrHeight / 14),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20.0, right: 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Hi $name",
+                                        style: const TextStyle(fontSize: 30, color: Colors.white)),
+                                    SizedBox(height: scrHeight / 70),
+                                    Text("Good $day_state, how do you feel?",
+                                        style: const TextStyle(fontSize: 20, color: Colors.white)),
+                                    SizedBox(height: scrHeight / 35),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.deepPurpleAccent, // background
+                                      onPrimary: Colors.white, // foreground
+                                      elevation: 10,
+                                    ),
+                                    child: const Text('Happy'),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.deepPurpleAccent, // background
+                                      onPrimary: Colors.white, // foreground
+                                      elevation: 10,
+                                    ),
+                                    child: const Text('Sad'),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.deepPurpleAccent, // background
+                                      onPrimary: Colors.white, // foreground
+                                      elevation: 10,
+                                    ),
+                                    child: const Text('Angry'),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.deepPurpleAccent, // background
+                                      onPrimary: Colors.white, // foreground
+                                      elevation: 10,
+                                    ),
+                                    child: const Text('Fatigued'),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 5),
+                            ],
+                        ),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.deepPurpleAccent, // background
-                            onPrimary: Colors.white, // foreground
-                          ),
-                          child: const Text('Happy'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.deepPurpleAccent, // background
-                            onPrimary: Colors.white, // foreground
-                          ),
-                          child: const Text('Sad'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.deepPurpleAccent, // background
-                            onPrimary: Colors.white, // foreground
-                          ),
-                          child: const Text('Angry'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.deepPurpleAccent, // background
-                            onPrimary: Colors.white, // foreground
-                          ),
-                          child: const Text('Fatigued'),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                  ],
-                ),
-              ),
+                  ),
 
               // end of code
             ),
@@ -185,6 +204,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -204,6 +224,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -224,6 +245,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -243,6 +265,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -263,6 +286,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -282,6 +306,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -302,6 +327,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -321,6 +347,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -341,6 +368,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -360,6 +388,7 @@ class _MainPageState extends State<MainPage> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
+                                  elevation: 12,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -380,5 +409,39 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
     );
+  }
+}
+
+class MyClipper extends CustomClipper<Path>
+{
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+
+    double x = size.width;
+    double y = size.height;
+
+    path.lineTo(0.0, y);
+
+    var firstControlPoint = Offset(x / 6, y - (y / 8));
+    var firstEndPoint = Offset(x / 2, y - (y / 16));
+    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
+        firstEndPoint.dx, firstEndPoint.dy);
+
+    var secondControlPoint = Offset(x - (x / 6), y);
+    var secondEndPoint = Offset(x, y - (y / 7));
+    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
+        secondEndPoint.dx, secondEndPoint.dy);
+
+    path.lineTo(x, 0.0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper)
+  {
+    return true;
   }
 }
