@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:health_app/BodyFatCalculator.dart';
+import 'package:health_app/OvulationCounter.dart';
+
+import 'BMICalc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -190,7 +194,8 @@ class _MainPageState extends State<MainPage> {
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   return Container(
-                    margin: const EdgeInsets.all(30.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: scrWidth / 25, vertical: scrHeight / 14),
                     child: Column(
                       children: [
                         Row(
@@ -200,8 +205,17 @@ class _MainPageState extends State<MainPage> {
                               width: 150.0,
                               height: 150.0,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const BodyFatCalculator(),
+                                    ),
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
+                                  //primary: Colors.white10.withOpacity(0),
+                                  //onPrimary: Colors.white,
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
                                   elevation: 12,
@@ -209,7 +223,7 @@ class _MainPageState extends State<MainPage> {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                child: const Text('Ideal Weight'),
+                                child: const Text('Body Fat'),
                               ),
                             ),
                             const SizedBox(
@@ -220,7 +234,14 @@ class _MainPageState extends State<MainPage> {
                               width: 150.0,
                               height: 150.0,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const BMICalc(),
+                                    ),
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
@@ -229,7 +250,7 @@ class _MainPageState extends State<MainPage> {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                child: const Text('Body Fat'),
+                                child: const Text('BMI Calculator'),
                               ),
                             ),
                           ],
@@ -241,7 +262,15 @@ class _MainPageState extends State<MainPage> {
                               width: 150.0,
                               height: 150.0,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const OvulationCounter(),
+                                    ),
+                                  );
+
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
@@ -250,7 +279,7 @@ class _MainPageState extends State<MainPage> {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                child: const Text('Medical Records'),
+                                child: const Text('Ovulation Tracker'),
                               ),
                             ),
                             const SizedBox(
@@ -373,7 +402,7 @@ class _MainPageState extends State<MainPage> {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                child: const Text('BMI Calculator'),
+                                child: const Text('Medical Records'),
                               ),
                             ),
                             const SizedBox(
