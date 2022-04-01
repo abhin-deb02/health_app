@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_app/BodyFatCalculator.dart';
 import 'package:health_app/OvulationCounter.dart';
+import 'package:health_app/WaterIntake.dart';
 
 import 'BMICalc.dart';
 
@@ -269,7 +270,6 @@ class _MainPageState extends State<MainPage> {
                                       builder: (context) => const OvulationCounter(),
                                     ),
                                   );
-
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
@@ -290,7 +290,14 @@ class _MainPageState extends State<MainPage> {
                               width: 150.0,
                               height: 150.0,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const WaterIntake(),
+                                    ),
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,

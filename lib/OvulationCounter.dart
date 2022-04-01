@@ -180,8 +180,8 @@ class _OvulationCounterState extends State<OvulationCounter> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                         elevation: 7,
                         color: Colors.redAccent.shade200,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
                           child: Text("See Results", style: TextStyle(fontSize: 20, color: Colors.white)),
                         ),
                         onPressed: () {

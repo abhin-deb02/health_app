@@ -209,5 +209,4 @@ class _BMICalcState extends State<BMICalc> {
       classify = cat;
     });
   }
-
 }
