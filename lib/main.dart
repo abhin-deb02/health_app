@@ -4,6 +4,7 @@ import 'package:health_app/OvulationCounter.dart';
 import 'package:health_app/WaterIntake.dart';
 
 import 'BMICalc.dart';
+import 'CalorieIntake.dart';
 
 void main() {
   runApp(const MyApp());
@@ -318,7 +319,14 @@ class _MainPageState extends State<MainPage> {
                               width: 150.0,
                               height: 150.0,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const CalorieIntake(),
+                                    ),
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.deepPurpleAccent,
                                   onPrimary: Colors.white,
@@ -327,7 +335,7 @@ class _MainPageState extends State<MainPage> {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                child: const Text('Pregnancy due date'),
+                                child: const Text('Calorie Intake'),
                               ),
                             ),
                             const SizedBox(
@@ -368,7 +376,7 @@ class _MainPageState extends State<MainPage> {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                child: const Text('Calorie Chart'),
+                                child: const Text('Pregnancy due date'),
                               ),
                             ),
                             const SizedBox(
