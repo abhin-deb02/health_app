@@ -309,7 +309,7 @@ class _OvulationResultState extends State<OvulationResult> {
                                                 shape: BoxShape.circle,
                                                 image: new DecorationImage(
                                                     fit: BoxFit.cover,
-                                                    image: AssetImage('assets/fertile_period.png')
+                                                    image: AssetImage('assets/images/fertile_period.png')
                                                 )
                                             )
                                         ),
@@ -380,7 +380,7 @@ class _OvulationResultState extends State<OvulationResult> {
                                                 shape: BoxShape.circle,
                                                 image: new DecorationImage(
                                                     fit: BoxFit.cover,
-                                                    image: AssetImage('assets/ovulate.png')
+                                                    image: AssetImage('assets/images/ovulate.png')
                                                 )
                                             )
                                         ),
@@ -448,7 +448,7 @@ class _OvulationResultState extends State<OvulationResult> {
                                                 shape: BoxShape.circle,
                                                 image: new DecorationImage(
                                                     fit: BoxFit.cover,
-                                                    image: AssetImage('assets/period.png')
+                                                    image: AssetImage('assets/images/period.png')
                                                 )
                                             )
                                         ),
@@ -516,7 +516,7 @@ class _OvulationResultState extends State<OvulationResult> {
                                                 shape: BoxShape.circle,
                                                 image: new DecorationImage(
                                                     fit: BoxFit.cover,
-                                                    image: AssetImage('assets/fertile_period.png')
+                                                    image: AssetImage('assets/images/fertile_period.png')
                                                 )
                                             )
                                         ),
