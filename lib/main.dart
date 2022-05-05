@@ -39,6 +39,8 @@ class _MainPageState extends State<MainPage> {
   // variables added by Abhinandan
   String name = "John";
   String day_state = "Morning";
+  double value = 50;
+
 
   @override
   Widget build(BuildContext context) {
@@ -143,43 +145,32 @@ class _MainPageState extends State<MainPage> {
                                 ),
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.deepPurpleAccent, // background
-                                      onPrimary: Colors.white, // foreground
-                                      elevation: 10,
+                                  const SizedBox(
+                                    child: Text('🙁',
+                                      style: TextStyle(fontSize: 25),
                                     ),
-                                    child: const Text('Happy'),
                                   ),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.deepPurpleAccent, // background
-                                      onPrimary: Colors.white, // foreground
-                                      elevation: 10,
+                                  Expanded(
+                                    child: SizedBox(
+                                      child: Slider(
+                                        value: value,
+                                        min: 0,
+                                        max: 100,
+                                        divisions: 10,
+                                        activeColor: Colors.deepPurpleAccent,
+                                        inactiveColor: Colors.white10,
+                                        //label: value.round().toString(),
+                                        onChanged: (double value) => setState(() => this.value = value
+                                      ),
+                                      ),
                                     ),
-                                    child: const Text('Sad'),
                                   ),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.deepPurpleAccent, // background
-                                      onPrimary: Colors.white, // foreground
-                                      elevation: 10,
-                                    ),
-                                    child: const Text('Angry'),
+                                  const SizedBox(
+                                  child: Text('😃',
+                                    style: TextStyle(fontSize: 25),
                                   ),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.deepPurpleAccent, // background
-                                      onPrimary: Colors.white, // foreground
-                                      elevation: 10,
-                                    ),
-                                    child: const Text('Fatigued'),
                                   ),
                                 ],
                               ),
@@ -356,88 +347,6 @@ class _MainPageState extends State<MainPage> {
                                   ),
                                 ),
                                 child: const Text('Mental Health Record'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              width: 150.0,
-                              height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                ),
-                                child: const Text('Pregnancy due date'),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20.0,
-                              height: 200.0,
-                            ),
-                            SizedBox(
-                              width: 150.0,
-                              height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                ),
-                                child: const Text('Meditation Timer'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              width: 150.0,
-                              height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                ),
-                                child: const Text('Medical Records'),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20.0,
-                              height: 200.0,
-                            ),
-                            SizedBox(
-                              width: 150.0,
-                              height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                ),
-                                child: const Text('Prescription Record'),
                               ),
                             ),
                           ],

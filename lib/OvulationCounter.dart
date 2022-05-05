@@ -58,7 +58,7 @@ class _OvulationCounterState extends State<OvulationCounter> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              shape: ContinuousRectangleBorder(
+              shape: const ContinuousRectangleBorder(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(90),
                     bottomRight: Radius.circular(90),
@@ -84,19 +84,19 @@ class _OvulationCounterState extends State<OvulationCounter> {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 0),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
 
-                    Text("Pick your last period date:", style: TextStyle(fontSize: 20)),
+                    const Text("Pick your last period date:", style: TextStyle(fontSize: 20)),
 
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: RaisedButton(
                         color: Colors.grey[100],
                         shape: RoundedRectangleBorder(
@@ -104,7 +104,7 @@ class _OvulationCounterState extends State<OvulationCounter> {
                         elevation: 4.0,
                         onPressed: _showDatePicker,
                         child:Container(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
                           alignment: Alignment.center,
                           height: 50.0,
                           child: Row(
@@ -146,11 +146,11 @@ class _OvulationCounterState extends State<OvulationCounter> {
                       ),
                     ),
 
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
 
-                    Text("Pick your average cycle (days):", style: TextStyle(fontSize: 20)),
+                    const Text("Pick your average cycle (days):", style: TextStyle(fontSize: 20)),
 
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
                     Row(
                       mainAxisSize: MainAxisSize.max,
@@ -159,22 +159,22 @@ class _OvulationCounterState extends State<OvulationCounter> {
                         FloatingActionButton(
                           heroTag: "btn1",
                           backgroundColor: Colors.redAccent,
-                          child: Icon(Icons.remove),
+                          child: const Icon(Icons.remove),
                           mini: true,
                           onPressed: decrementDays,
                         ),
-                        Text("${cycleDays}", style: TextStyle(fontSize: 60)),
+                        Text("${cycleDays}", style: const TextStyle(fontSize: 60)),
                         FloatingActionButton(
                           heroTag: "btn2",
                           backgroundColor: Colors.redAccent,
-                          child: Icon(Icons.add),
+                          child: const Icon(Icons.add),
                           mini: true,
                           onPressed: incrementDays,
                         ),
                       ],
                     ),
 
-                    SizedBox(height: 80),
+                    const SizedBox(height: 80),
 
                     RaisedButton(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -252,7 +252,7 @@ class _OvulationResultState extends State<OvulationResult> {
             child: CustomScrollView(
                 slivers: [
                   SliverAppBar(
-                    shape: ContinuousRectangleBorder(
+                    shape: const ContinuousRectangleBorder(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(90),
                           bottomRight: Radius.circular(90),
@@ -287,7 +287,7 @@ class _OvulationResultState extends State<OvulationResult> {
                       Text("Next Period: " + nextPeriod.toString()),
                        */
 
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
 
                         Padding(
                           padding: const EdgeInsets.all(10.0),
@@ -305,16 +305,16 @@ class _OvulationResultState extends State<OvulationResult> {
                                         Container(
                                             width: 55.0,
                                             height: 55.0,
-                                            decoration: new BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                image: new DecorationImage(
+                                                image: DecorationImage(
                                                     fit: BoxFit.cover,
                                                     image: AssetImage('assets/images/fertile_period.png')
                                                 )
                                             )
                                         ),
-                                        SizedBox(height: 5),
-                                        Text(" FERTILE\nWINDOW", style: TextStyle(fontSize: 12)),
+                                        const SizedBox(height: 5),
+                                        const Text(" FERTILE\nWINDOW", style: TextStyle(fontSize: 12)),
 
                                       ],
                                     ),
@@ -325,29 +325,29 @@ class _OvulationResultState extends State<OvulationResult> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Text("Your Fertile Window is:",
+                                        const Text("Your Fertile Window is:",
                                           style: TextStyle (
                                             color: Colors.redAccent,
                                             fontSize: 16,
                                           ),
                                         ),
 
-                                        SizedBox(height: 5),
+                                        const SizedBox(height: 5),
 
                                         RichText(
                                           text: TextSpan(
-                                              style: TextStyle (
+                                              style: const TextStyle (
                                                   color: Colors.redAccent,
                                                   fontSize: 24
                                               ),
                                               children: [
-                                                TextSpan(text: ferWinSt.day.toString(), style: TextStyle(fontSize: 36)),
-                                                TextSpan(text: "/", style: TextStyle(fontSize: 28)),
-                                                TextSpan(text: ferWinSt.month.toString(), style: TextStyle(fontSize: 28)),
-                                                TextSpan(text: "  to  "),
-                                                TextSpan(text: ferWinEnd.day.toString(), style: TextStyle(fontSize: 36)),
-                                                TextSpan(text: "/", style: TextStyle(fontSize: 28)),
-                                                TextSpan(text: ferWinEnd.month.toString(), style: TextStyle(fontSize: 28)),
+                                                TextSpan(text: ferWinSt.day.toString(), style: const TextStyle(fontSize: 36)),
+                                                const TextSpan(text: "/", style: TextStyle(fontSize: 28)),
+                                                TextSpan(text: ferWinSt.month.toString(), style: const TextStyle(fontSize: 28)),
+                                                const TextSpan(text: "  to  "),
+                                                TextSpan(text: ferWinEnd.day.toString(), style: const TextStyle(fontSize: 36)),
+                                                const TextSpan(text: "/", style: TextStyle(fontSize: 28)),
+                                                TextSpan(text: ferWinEnd.month.toString(), style: const TextStyle(fontSize: 28)),
                                               ]
                                           ),
                                         )
@@ -376,16 +376,16 @@ class _OvulationResultState extends State<OvulationResult> {
                                         Container(
                                             width: 55.0,
                                             height: 55.0,
-                                            decoration: new BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                image: new DecorationImage(
+                                                image: DecorationImage(
                                                     fit: BoxFit.cover,
                                                     image: AssetImage('assets/images/ovulate.png')
                                                 )
                                             )
                                         ),
-                                        SizedBox(height: 5),
-                                        Text("OVULATION", style: TextStyle(fontSize: 12)),
+                                        const SizedBox(height: 5),
+                                        const Text("OVULATION", style: TextStyle(fontSize: 12)),
 
                                       ],
                                     ),
@@ -396,7 +396,7 @@ class _OvulationResultState extends State<OvulationResult> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Text("Approx. Ovulation Date:",
+                                        const Text("Approx. Ovulation Date:",
                                           style: TextStyle (
                                             color: Colors.redAccent,
                                             fontSize: 16,
@@ -407,14 +407,14 @@ class _OvulationResultState extends State<OvulationResult> {
 
                                         RichText(
                                           text: TextSpan(
-                                              style: TextStyle (
+                                              style: const TextStyle (
                                                   color: Colors.redAccent,
                                                   fontSize: 24
                                               ),
                                               children: [
-                                                TextSpan(text: ovulate.day.toString(), style: TextStyle(fontSize: 36)),
-                                                TextSpan(text: "/", style: TextStyle(fontSize: 28)),
-                                                TextSpan(text: ovulate.month.toString(), style: TextStyle(fontSize: 28)),
+                                                TextSpan(text: ovulate.day.toString(), style: const TextStyle(fontSize: 36)),
+                                                const TextSpan(text: "/", style: TextStyle(fontSize: 28)),
+                                                TextSpan(text: ovulate.month.toString(), style: const TextStyle(fontSize: 28)),
                                               ]
                                           ),
                                         )
@@ -444,16 +444,16 @@ class _OvulationResultState extends State<OvulationResult> {
                                         Container(
                                             width: 55.0,
                                             height: 55.0,
-                                            decoration: new BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                image: new DecorationImage(
+                                                image: DecorationImage(
                                                     fit: BoxFit.cover,
                                                     image: AssetImage('assets/images/period.png')
                                                 )
                                             )
                                         ),
-                                        SizedBox(height: 5),
-                                        Text("NEXT PERIOD", style: TextStyle(fontSize: 12)),
+                                        const SizedBox(height: 5),
+                                        const Text("NEXT PERIOD", style: TextStyle(fontSize: 12)),
 
                                       ],
                                     ),
@@ -464,25 +464,25 @@ class _OvulationResultState extends State<OvulationResult> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Text("Next Period is due on:",
+                                        const Text("Next Period is due on:",
                                           style: TextStyle (
                                             color: Colors.redAccent,
                                             fontSize: 16,
                                           ),
                                         ),
 
-                                        SizedBox(height: 5),
+                                        const SizedBox(height: 5),
 
                                         RichText(
                                           text: TextSpan(
-                                              style: TextStyle (
+                                              style: const TextStyle (
                                                   color: Colors.redAccent,
                                                   fontSize: 24
                                               ),
                                               children: [
-                                                TextSpan(text: nextPeriod.day.toString(), style: TextStyle(fontSize: 36)),
-                                                TextSpan(text: "/", style: TextStyle(fontSize: 28)),
-                                                TextSpan(text: nextPeriod.month.toString(), style: TextStyle(fontSize: 28)),
+                                                TextSpan(text: nextPeriod.day.toString(), style: const TextStyle(fontSize: 36)),
+                                                const TextSpan(text: "/", style: TextStyle(fontSize: 28)),
+                                                TextSpan(text: nextPeriod.month.toString(), style: const TextStyle(fontSize: 28)),
                                               ]
                                           ),
                                         )
@@ -512,16 +512,16 @@ class _OvulationResultState extends State<OvulationResult> {
                                         Container(
                                             width: 55.0,
                                             height: 55.0,
-                                            decoration: new BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                image: new DecorationImage(
+                                                image: DecorationImage(
                                                     fit: BoxFit.cover,
                                                     image: AssetImage('assets/images/fertile_period.png')
                                                 )
                                             )
                                         ),
-                                        SizedBox(height: 10),
-                                        Text("PREGNANCY\n TEST DATE", style: TextStyle(fontSize: 12)),
+                                        const SizedBox(height: 10),
+                                        const Text("PREGNANCY\n TEST DATE", style: TextStyle(fontSize: 12)),
 
                                       ],
                                     ),
@@ -532,25 +532,25 @@ class _OvulationResultState extends State<OvulationResult> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Text("Pregnancy Test Date\n(if expecting):",
+                                        const Text("Pregnancy Test Date\n(if expecting):",
                                           style: TextStyle (
                                             color: Colors.redAccent,
                                             fontSize: 16,
                                           ),
                                         ),
 
-                                        SizedBox(height: 5),
+                                        const SizedBox(height: 5),
 
                                         RichText(
                                           text: TextSpan(
-                                              style: TextStyle (
+                                              style: const TextStyle (
                                                   color: Colors.redAccent,
                                                   fontSize: 24
                                               ),
                                               children: [
-                                                TextSpan(text: pregCheck.day.toString(), style: TextStyle(fontSize: 36)),
-                                                TextSpan(text: "/", style: TextStyle(fontSize: 28)),
-                                                TextSpan(text: pregCheck.month.toString(), style: TextStyle(fontSize: 28)),
+                                                TextSpan(text: pregCheck.day.toString(), style: const TextStyle(fontSize: 36)),
+                                                const TextSpan(text: "/", style: TextStyle(fontSize: 28)),
+                                                TextSpan(text: pregCheck.month.toString(), style: const TextStyle(fontSize: 28)),
                                               ]
                                           ),
                                         )
