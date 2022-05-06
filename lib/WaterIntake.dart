@@ -25,6 +25,7 @@ class _WaterIntakeState extends State<WaterIntake> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(180),
         child: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
           elevation: 7,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(

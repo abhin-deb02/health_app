@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:health_app/BodyFatCalculator.dart';
 import 'package:health_app/OvulationCounter.dart';
@@ -39,7 +41,14 @@ class _MainPageState extends State<MainPage> {
   // variables added by Abhinandan
   String name = "John";
   String day_state = "Morning";
-  double value = 50;
+
+  // vars for slider with emotion scale [1-9]
+  double value = 5;
+  var labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+
+  // datetime object
+  DateTime t = DateTime.now();
 
 
   @override
@@ -47,6 +56,37 @@ class _MainPageState extends State<MainPage> {
     // setting up device width and height variables [for responsiveness]
     double scrWidth = MediaQuery.of(context).size.width;
     double scrHeight = MediaQuery.of(context).size.height;
+
+    // function to determine time-phase of day
+    void changeDayState()
+    {
+      int hour = t.hour;
+      if (hour >= 3 && hour < 12) {
+        day_state = "Morning";
+      }
+
+      else if (hour >= 12 && hour < 16) {
+        day_state = "Afternoon";
+      }
+
+      else if (hour >= 16 && hour < 22) {
+        day_state = "Evening";
+      }
+
+      else
+      {
+        day_state = "Night";
+      }
+
+      setState(() {});
+
+    }
+
+    // start it once at the very beginning [one-shot]
+    Timer(Duration(seconds: 1), () => changeDayState());
+
+    // periodic timer function call, so that greeting updates as per clock time
+    Timer.periodic(Duration(seconds: 30), (timer) => changeDayState());
 
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
@@ -154,16 +194,28 @@ class _MainPageState extends State<MainPage> {
                                   ),
                                   Expanded(
                                     child: SizedBox(
-                                      child: Slider(
-                                        value: value,
-                                        min: 0,
-                                        max: 100,
-                                        divisions: 10,
-                                        activeColor: Colors.deepPurpleAccent,
-                                        inactiveColor: Colors.white10,
-                                        //label: value.round().toString(),
-                                        onChanged: (double value) => setState(() => this.value = value
-                                      ),
+                                      child: SliderTheme(
+                                        data: SliderThemeData(
+                                          trackHeight: 16,
+                                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                                          valueIndicatorTextStyle: TextStyle(color: Colors.redAccent),
+                                          valueIndicatorColor: Colors.white.withOpacity(0.94),
+                                        ),
+                                        child: Slider(
+                                          value: value,
+                                          min: 1.0,
+                                          max: 9.0,
+                                          divisions: 8,
+                                          label: labels[value.toInt() - 1],
+                                          activeColor: Colors.redAccent.shade200,
+                                          inactiveColor: Colors.white38,
+                                          //label: value.round().toString(),
+                                          onChanged: (double value) => setState(() {
+                                            this.value = value;
+                                            print(value);
+                                          }
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),

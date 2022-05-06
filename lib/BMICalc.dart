@@ -28,6 +28,7 @@ class _BMICalcState extends State<BMICalc> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(180),
           child: AppBar(
+            iconTheme: IconThemeData(color: Colors.black),
             elevation: 7,
             shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))),
             backgroundColor: const Color.fromRGBO(255, 255, 255, 1),

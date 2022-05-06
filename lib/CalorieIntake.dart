@@ -35,6 +35,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(120),
         child: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
           elevation: 7,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(

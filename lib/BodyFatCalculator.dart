@@ -37,6 +37,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(120),
           child: AppBar(
+            iconTheme: IconThemeData(color: Colors.black),
             elevation: 7,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))),
             backgroundColor: Color.fromRGBO(255, 255, 255, 1),
