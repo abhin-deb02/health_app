@@ -46,6 +46,9 @@ class _MainPageState extends State<MainPage> {
   double value = 5;
   var labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
+  // emoji labels [test]
+  var emojis = ['😖', '😟', '🙁', '😕', '😐', '🙂', '😀', '😃', '😄'];
+
 
   // datetime object
   DateTime t = DateTime.now();
@@ -187,8 +190,9 @@ class _MainPageState extends State<MainPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  const SizedBox(
-                                    child: Text('🙁',
+                                  SizedBox(
+                                    child: Text(//'🙁',
+                                      emojis[value.toInt() - 1],
                                       style: TextStyle(fontSize: 25),
                                     ),
                                   ),
@@ -219,11 +223,22 @@ class _MainPageState extends State<MainPage> {
                                       ),
                                     ),
                                   ),
+
+                                  /*
                                   const SizedBox(
                                   child: Text('😃',
                                     style: TextStyle(fontSize: 25),
                                   ),
                                   ),
+                                   */
+
+                                  IconButton(
+                                      padding: EdgeInsets.only(right: 5.0),
+                                      icon: Icon(Icons.task_alt_rounded, color: Colors.white),
+                                      constraints: BoxConstraints(),
+                                      onPressed: () {},
+                                  )
+
                                 ],
                               ),
                               const SizedBox(height: 5),
