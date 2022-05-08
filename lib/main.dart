@@ -2,13 +2,19 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:health_app/BodyFatCalculator.dart';
+import 'package:health_app/LoginScreen.dart';
 import 'package:health_app/OvulationCounter.dart';
 import 'package:health_app/WaterIntake.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'BMICalc.dart';
 import 'CalorieIntake.dart';
 
-void main() {
+Future main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -21,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const MainPage(),
+      home: LoginScreen(),
     );
   }
 }
@@ -86,10 +92,10 @@ class _MainPageState extends State<MainPage> {
     }
 
     // start it once at the very beginning [one-shot]
-    Timer(Duration(seconds: 1), () => changeDayState());
+    Timer(const Duration(seconds: 1), () => changeDayState());
 
     // periodic timer function call, so that greeting updates as per clock time
-    Timer.periodic(Duration(seconds: 30), (timer) => changeDayState());
+    Timer.periodic(const Duration(seconds: 30), (timer) => changeDayState());
 
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
@@ -193,7 +199,7 @@ class _MainPageState extends State<MainPage> {
                                   SizedBox(
                                     child: Text(//'🙁',
                                       emojis[value.toInt() - 1],
-                                      style: TextStyle(fontSize: 25),
+                                      style: const TextStyle(fontSize: 25),
                                     ),
                                   ),
                                   Expanded(
@@ -201,8 +207,8 @@ class _MainPageState extends State<MainPage> {
                                       child: SliderTheme(
                                         data: SliderThemeData(
                                           trackHeight: 16,
-                                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
-                                          valueIndicatorTextStyle: TextStyle(color: Colors.redAccent),
+                                          thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                                          valueIndicatorTextStyle: const TextStyle(color: Colors.redAccent),
                                           valueIndicatorColor: Colors.white.withOpacity(0.94),
                                         ),
                                         child: Slider(
