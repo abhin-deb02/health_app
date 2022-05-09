@@ -1,11 +1,16 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_app/BodyFatCalculator.dart';
 import 'package:health_app/LoginScreen.dart';
 import 'package:health_app/OvulationCounter.dart';
 import 'package:health_app/WaterIntake.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:health_app/loading.dart';
+import 'package:health_app/provider/sign_in.dart';
+import 'package:provider/provider.dart';
 
 import 'BMICalc.dart';
 import 'CalorieIntake.dart';
@@ -22,15 +27,68 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    /*
+    return ChangeNotifierProvider(
+      create: (context) => AuthService(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: Wrapper(),
+      ),
+    );
+    */
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginScreen(),
+      home: Wrapper(),
+    );
+
+  }
+}
+
+// wrapper widget for handling login and redirects to pages
+
+class Wrapper extends StatelessWidget {
+  const Wrapper({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting)
+                return Loading();
+
+              if (!snapshot.hasData)
+                return LoginScreen();
+
+              return MainPage();
+
+              /*
+              else if (snapshot.hasData) {
+                return MainPage();
+              }
+              else if (snapshot.hasError) {
+                return Center(child: Text("Something went wrong!"));
+              }
+              else {
+                return LoginScreen();
+              }
+               */
+            },
+        ),
     );
   }
 }
+
+
+// end of wrapper widget
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -55,10 +113,62 @@ class _MainPageState extends State<MainPage> {
   // emoji labels [test]
   var emojis = ['😖', '😟', '🙁', '😕', '😐', '🙂', '😀', '😃', '😄'];
 
+  // timer variables
+  late Timer _dayStatePeriodic;
+  late Timer _dayStateOneShot;
+
 
   // datetime object
   DateTime t = DateTime.now();
 
+  // function to get user name
+  void getUserName()
+  {
+    setState(() { name = user!.displayName!.split(' ')[0]; });
+  }
+
+  // function to determine time-phase of day
+  void changeDayState()
+  {
+    int hour = t.hour;
+    if (hour >= 3 && hour < 12) {
+      day_state = "Morning";
+    }
+    else if (hour >= 12 && hour < 16) {
+      day_state = "Afternoon";
+    }
+    else if (hour >= 16 && hour < 22) {
+      day_state = "Evening";
+    }
+    else
+    {
+      day_state = "Night";
+    }
+
+    setState(() {});
+  }
+
+  @override
+  void initState()
+  {
+    // start it once at the very beginning [one-shot]
+    _dayStateOneShot = Timer(const Duration(seconds: 0), () {changeDayState(); getUserName(); });
+    // periodic timer function call, so that greeting updates as per clock time
+    _dayStatePeriodic = Timer.periodic(const Duration(seconds: 30), (timer) => changeDayState());
+
+    super.initState();
+  }
+
+  @override
+  void dispose()
+  {
+    _dayStatePeriodic.cancel();
+    _dayStateOneShot.cancel();
+    super.dispose();
+  }
+
+  // getting current user using instance variable
+  final user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -66,38 +176,10 @@ class _MainPageState extends State<MainPage> {
     double scrWidth = MediaQuery.of(context).size.width;
     double scrHeight = MediaQuery.of(context).size.height;
 
-    // function to determine time-phase of day
-    void changeDayState()
-    {
-      int hour = t.hour;
-      if (hour >= 3 && hour < 12) {
-        day_state = "Morning";
-      }
-
-      else if (hour >= 12 && hour < 16) {
-        day_state = "Afternoon";
-      }
-
-      else if (hour >= 16 && hour < 22) {
-        day_state = "Evening";
-      }
-
-      else
-      {
-        day_state = "Night";
-      }
-
-      setState(() {});
-
-    }
-
-    // start it once at the very beginning [one-shot]
-    Timer(const Duration(seconds: 1), () => changeDayState());
-
-    // periodic timer function call, so that greeting updates as per clock time
-    Timer.periodic(const Duration(seconds: 30), (timer) => changeDayState());
 
     return Scaffold(
+
+      /*
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: Row(
@@ -119,6 +201,9 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       ),
+
+      */
+
       body: Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -150,14 +235,40 @@ class _MainPageState extends State<MainPage> {
                       )),
                   centerTitle: true,
                 ),
+
+                leading: IconButton(
+                  icon: Icon(Icons.menu),
+                  onPressed: () {
+                    // here we'll make it call a sidebar modal
+                    // but for now it just logs out the user [log-out button substitute]
+
+                    /*
+                    final provider = Provider.of<AuthService>(context, listen: false);
+                    provider.logOut();
+                    */
+
+                    AuthService().logOut();
+
+                  },
+                ),
+
                 actions: <Widget>[
+                  /*
                   IconButton(
                     color: Colors.white,
                     icon: const Icon(Icons.add_sharp),
                     tooltip: 'Add new entry',
                     onPressed: () {/* ... */},
                   ),
-                ]),
+                  */
+
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.transparent,
+                    child: CircleAvatar(backgroundImage: NetworkImage(user!.photoURL!)),
+                  ),
+                ]
+            ),
             SliverToBoxAdapter(
               child:
                   ClipPath(
@@ -184,7 +295,7 @@ class _MainPageState extends State<MainPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Hi $name",
+                                    Text("Hi $name,",
                                         style: const TextStyle(fontSize: 30, color: Colors.white)),
                                     SizedBox(height: scrHeight / 70),
                                     Text("Good $day_state, how do you feel?",
@@ -242,7 +353,22 @@ class _MainPageState extends State<MainPage> {
                                       padding: EdgeInsets.only(right: 5.0),
                                       icon: Icon(Icons.task_alt_rounded, color: Colors.white),
                                       constraints: BoxConstraints(),
-                                      onPressed: () {},
+                                      onPressed: () async {
+
+                                        // writing code to push the values in db
+
+                                        DateTime objTime = DateTime.now();
+
+                                        String date = objTime.toString().split(' ')[0];
+                                        String datapoint = objTime.toString() + "," + value.toInt().toString();
+
+                                        DocumentReference docRef = FirebaseFirestore.instance.collection('userData').doc(user!.uid);
+                                        docRef.update({
+                                          'date' : FieldValue.arrayUnion([date]),
+                                          'dtime,points' : FieldValue.arrayUnion([datapoint]),
+                                        });
+
+                                      },
                                   )
 
                                 ],

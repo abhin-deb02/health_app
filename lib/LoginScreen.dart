@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:health_app/provider/sign_in.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+
+  LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final Color primaryColor = const Color(0xff18203d);
+
   final Color secondaryColor = const Color(0xff232c51);
 
   final Color logoGreen = const Color(0xff25bcbb);
 
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
-  LoginScreen({Key? key}) : super(key: key);
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +63,14 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 MaterialButton(
-                  elevation: 0,
+                  elevation: 10,
                   minWidth: double.maxFinite,
                   height: 50,
-                  onPressed: () {
+                  onPressed: () async {
                     //Here goes the logic for Google SignIn
+                    bool status = await AuthService().googleLogIn();
+                    if (status == false)
+                      print("issue - unable signing in");
                   },
                   color: Colors.blue,
                   child: Row(
