@@ -163,7 +163,7 @@ class _OvulationCounterState extends State<OvulationCounter> {
                           mini: true,
                           onPressed: decrementDays,
                         ),
-                        Text("${cycleDays}", style: const TextStyle(fontSize: 60)),
+                        Text("$cycleDays", style: const TextStyle(fontSize: 60)),
                         FloatingActionButton(
                           heroTag: "btn2",
                           backgroundColor: Colors.redAccent,
@@ -403,7 +403,7 @@ class _OvulationResultState extends State<OvulationResult> {
                                           ),
                                         ),
 
-                                        SizedBox(height: 5),
+                                        const SizedBox(height: 5),
 
                                         RichText(
                                           text: TextSpan(

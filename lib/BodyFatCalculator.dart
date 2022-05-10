@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -35,13 +34,13 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
     return Container(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(120),
+          preferredSize: const Size.fromHeight(120),
           child: AppBar(
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: const IconThemeData(color: Colors.black),
             elevation: 7,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))),
-            backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-            actions: [],
+            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))),
+            backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+            actions: const [],
             flexibleSpace: const FlexibleSpaceBar(
               title: Text("Body Fat Calculator",
                   style: TextStyle(color: Colors.redAccent, fontSize: 28)),
@@ -71,7 +70,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
 
                   Row(
                     children: [
@@ -81,7 +80,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                   ),
 
                   // height
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,22 +89,22 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                         flex: 3,
                         child: Container(
                           //color: Colors.red,
-                            child: Text(
+                            child: const Text(
                                 "Height\n(in cm) ",
                                 style: TextStyle(fontSize: 18.0)
                             )
                         ),
                       ),
 
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
 
                       Flexible(
                         flex: 5,
-                        child: Container(
+                        child: SizedBox(
                           width: 180,
                           child: TextField(
                             controller: heightInput,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w300,
                               color: Colors.black,
@@ -114,7 +113,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                                 hintText: "eg., 178",
-                                hintStyle: TextStyle(fontStyle: FontStyle.italic),
+                                hintStyle: const TextStyle(fontStyle: FontStyle.italic),
                                 filled: true,
                                 fillColor: Colors.grey[200],
                                 border: OutlineInputBorder(
@@ -131,7 +130,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
 
 
                   // neck
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -140,22 +139,22 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                         flex: 3,
                         child: Container(
                           //color: Colors.red,
-                            child: Text(
+                            child: const Text(
                                 "Neck\n(in cm)",
                                 style: TextStyle(fontSize: 18.0)
                             )
                         ),
                       ),
 
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
 
                       Flexible(
                         flex: 5,
-                        child: Container(
+                        child: SizedBox(
                           width: 180,
                           child: TextField(
                             controller: neckInput,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w300,
                               color: Colors.black,
@@ -164,7 +163,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                                 hintText: "eg., 50",
-                                hintStyle: TextStyle(fontStyle: FontStyle.italic),
+                                hintStyle: const TextStyle(fontStyle: FontStyle.italic),
                                 filled: true,
                                 fillColor: Colors.grey[200],
                                 border: OutlineInputBorder(
@@ -181,7 +180,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
 
 
                   // waist
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -190,22 +189,22 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                         flex: 3,
                         child: Container(
                           //color: Colors.red,
-                            child: Text(
+                            child: const Text(
                                 "Waist\n(in cm)",
                                 style: TextStyle(fontSize: 18.0)
                             )
                         ),
                       ),
 
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
 
                       Flexible(
                         flex: 5,
-                        child: Container(
+                        child: SizedBox(
                           width: 180,
                           child: TextField(
                             controller: waistInput,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w300,
                               color: Colors.black,
@@ -214,7 +213,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                                 hintText: "eg., 96",
-                                hintStyle: TextStyle(fontStyle: FontStyle.italic),
+                                hintStyle: const TextStyle(fontStyle: FontStyle.italic),
                                 filled: true,
                                 fillColor: Colors.grey[200],
                                 border: OutlineInputBorder(
@@ -235,7 +234,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                   Visibility(
                     visible: hipIsVisible,
                     child: Container(
-                      margin: EdgeInsets.only(top: 20.0),
+                      margin: const EdgeInsets.only(top: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -244,22 +243,22 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                             flex: 3,
                             child: Container(
                               //color: Colors.red,
-                                child: Text(
+                                child: const Text(
                                     "Hip\n(in cm)",
                                     style: TextStyle(fontSize: 18.0)
                                 )
                             ),
                           ),
 
-                          Spacer(flex: 1),
+                          const Spacer(flex: 1),
 
                           Flexible(
                             flex: 5,
-                            child: Container(
+                            child: SizedBox(
                               width: 180,
                               child: TextField(
                                 controller: hipInput,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w300,
                                   color: Colors.black,
@@ -268,7 +267,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     hintText: "eg., 92",
-                                    hintStyle: TextStyle(fontStyle: FontStyle.italic),
+                                    hintStyle: const TextStyle(fontStyle: FontStyle.italic),
                                     filled: true,
                                     fillColor: Colors.grey[200],
                                     border: OutlineInputBorder(
@@ -285,11 +284,11 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                     ),
                   ),
 
-                  SizedBox(height: 50.0),
+                  const SizedBox(height: 50.0),
 
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.symmetric(horizontal: 35),
+                    padding: const EdgeInsets.symmetric(horizontal: 35),
                     child: FlatButton(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
                       height: 60.0,
@@ -309,7 +308,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                             builder: (context) => BodyFatResults(index: currentindex, height: height, waist: waist, neck: neck, hip: hip))
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         "Calculate Body Fat",
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
@@ -345,7 +344,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
     return Expanded(
         child: Container(
 
-          margin: EdgeInsets.symmetric(horizontal: 12.0),
+          margin: const EdgeInsets.symmetric(horizontal: 12.0),
           height: 60.0,
 
           child: FlatButton(
@@ -402,16 +401,16 @@ class _BodyFatResultsState extends State<BodyFatResults> {
 
   double calcBFP_male(double waist, double neck, double height)
   {
-    double bfp_denom = 1.0324 - 0.19077 * logby10(waist-neck) + 0.15456 * logby10(height);
-    double final_bfp = 495 / bfp_denom - 450;
-    return final_bfp;
+    double bfpDenom = 1.0324 - 0.19077 * logby10(waist-neck) + 0.15456 * logby10(height);
+    double finalBfp = 495 / bfpDenom - 450;
+    return finalBfp;
   }
 
   double calcBFP_female(double waist, double neck, double height, double hip)
   {
-    double bfp_denom = 1.29579 - 0.35004 * logby10(waist+hip-neck) + 0.22100 * logby10(height);
-    double final_bfp = 495 / bfp_denom - 450;
-    return final_bfp;
+    double bfpDenom = 1.29579 - 0.35004 * logby10(waist+hip-neck) + 0.22100 * logby10(height);
+    double finalBfp = 495 / bfpDenom - 450;
+    return finalBfp;
   }
 
   String male_classify(double bfp)
@@ -561,7 +560,7 @@ class _BodyFatResultsState extends State<BodyFatResults> {
             ),
             child: CustomScrollView(
                 slivers: [
-                  SliverAppBar(
+                  const SliverAppBar(
 
                     shape: ContinuousRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -578,7 +577,7 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                     foregroundColor: Colors.black,
                     expandedHeight: 120,
                     backgroundColor: Colors.white,
-                    flexibleSpace: const FlexibleSpaceBar(
+                    flexibleSpace: FlexibleSpaceBar(
                       titlePadding: EdgeInsets.only(bottom: 35),
                       centerTitle: true,
                       title: Text("Results",
@@ -594,13 +593,12 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                     child: Column(
                       children: [
                         Stack(
-                            overflow: Overflow.visible,
-                            children: [
+                            clipBehavior: Clip.none, children: [
                               Positioned(
                                 top: 240,
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
+                                    borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
                                     color: widget.index == 0 ? Colors.blueAccent.withOpacity(0.8) : Colors.redAccent.withOpacity(0.8),
                                   ),
                                   width: MediaQuery.of(context).size.width,
@@ -608,14 +606,14 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                                     padding: const EdgeInsets.only(top: 20.0, bottom: 30.0),
                                     child: Column(
                                       children: [
-                                        SizedBox(height: 40.0),
-                                        Text("Category: ", style: TextStyle(fontSize: 20, color: Colors.white)),
-                                        SizedBox(height: 15.0),
+                                        const SizedBox(height: 40.0),
+                                        const Text("Category: ", style: TextStyle(fontSize: 20, color: Colors.white)),
+                                        const SizedBox(height: 15.0),
                                         RichText(
                                             text: TextSpan(
-                                                style: TextStyle(color: Colors.white),
+                                                style: const TextStyle(color: Colors.white),
                                                 children: [
-                                                  TextSpan(text:remark, style: TextStyle(fontSize: 48)),
+                                                  TextSpan(text:remark, style: const TextStyle(fontSize: 48)),
                                                 ]
                                             )
                                         ),
@@ -627,7 +625,7 @@ class _BodyFatResultsState extends State<BodyFatResults> {
 
                               Positioned(
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
                                     color: Colors.white,
                                   ),
@@ -636,34 +634,34 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                                     padding: const EdgeInsets.only(bottom: 30.0),
                                     child: Column(
                                       children: [
-                                        SizedBox(height: 40.0),
-                                        Text("Body Fat Percentage: ", style: TextStyle(fontSize: 20)),
-                                        SizedBox(height: 15.0),
+                                        const SizedBox(height: 40.0),
+                                        const Text("Body Fat Percentage: ", style: TextStyle(fontSize: 20)),
+                                        const SizedBox(height: 15.0),
                                         RichText(
                                             text: TextSpan(
-                                                style: TextStyle(color: Colors.black),
+                                                style: const TextStyle(color: Colors.black),
                                                 children: [
-                                                  TextSpan(text:bfp.toStringAsFixed(2), style: TextStyle(fontSize: 102)),
-                                                  TextSpan(text:" %", style: TextStyle(fontSize: 48)),
+                                                  TextSpan(text:bfp.toStringAsFixed(2), style: const TextStyle(fontSize: 102)),
+                                                  const TextSpan(text:" %", style: TextStyle(fontSize: 48)),
                                                 ]
                                             )
                                         ),
-                                        SizedBox(height: 20.0),
-                                        Text("** calculated using US-Navy Body Fat Formula", style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15)),
+                                        const SizedBox(height: 20.0),
+                                        const Text("** calculated using US-Navy Body Fat Formula", style: TextStyle(fontStyle: FontStyle.italic, fontSize: 15)),
                                       ],
                                     ),
                                   ),
                                 ),
                               ),
                             ]),
-                        SizedBox(height: 190),
-                        Container(
+                        const SizedBox(height: 190),
+                        SizedBox(
                           width: MediaQuery.of(context).size.width,
                           child: Column(
                             children: [
-                              Text("Suggestion: ", style: TextStyle(fontSize: 26, color: Colors.white)),
-                              SizedBox(height: 25.0),
-                              Text(suggest, style: TextStyle(fontSize: 18, color: Colors.white, fontStyle: FontStyle.italic), textAlign: TextAlign.center),
+                              const Text("Suggestion: ", style: TextStyle(fontSize: 26, color: Colors.white)),
+                              const SizedBox(height: 25.0),
+                              Text(suggest, style: const TextStyle(fontSize: 18, color: Colors.white, fontStyle: FontStyle.italic), textAlign: TextAlign.center),
                             ],
                           ),
                         ),

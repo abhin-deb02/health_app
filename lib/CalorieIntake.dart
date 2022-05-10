@@ -35,14 +35,14 @@ class _CalorieIntakeState extends State<CalorieIntake> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(120),
         child: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: const IconThemeData(color: Colors.black),
           elevation: 7,
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30))),
           backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-          actions: [],
+          actions: const [],
           flexibleSpace: const FlexibleSpaceBar(
             title: Text("Calorie Intake Calculator",
                 style: TextStyle(color: Colors.redAccent, fontSize: 24)),
@@ -95,7 +95,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                     const Spacer(flex: 1),
                     Flexible(
                       flex: 5,
-                      child: Container(
+                      child: SizedBox(
                         width: 180,
                         child: TextField(
                           controller: heightInput,
@@ -177,7 +177,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                     const Spacer(flex: 1),
                     Flexible(
                       flex: 5,
-                      child: Container(
+                      child: SizedBox(
                         width: 180,
                         child: TextField(
                           controller: neckInput,
@@ -218,7 +218,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                     const Spacer(flex: 1),
                     Flexible(
                       flex: 5,
-                      child: Container(
+                      child: SizedBox(
                         width: 180,
                         child: TextField(
                           controller: waistInput,
@@ -415,20 +415,20 @@ class _BodyFatResultsState extends State<BodyFatResults> {
   }
 
   double calcCalorieMale(double waist, double neck, double height, weight) {
-    double bfp_denom =
+    double bfpDenom =
         1.0324 - 0.19077 * logby10(waist - neck) + 0.15456 * logby10(height);
-    double final_bfp = 495 / bfp_denom - 450;
-    double calorieMale = (370 + 21.6 * (1 - final_bfp) * weight) * 3 * 2.2;
+    double finalBfp = 495 / bfpDenom - 450;
+    double calorieMale = (370 + 21.6 * (1 - finalBfp) * weight) * 3 * 2.2;
 
     return calorieMale;
   }
 
   double calcCalorieFemale(double waist, double neck, double height, double hip, weight) {
-    double bfp_denom = 1.29579 -
+    double bfpDenom = 1.29579 -
         0.35004 * logby10(waist + hip - neck) +
         0.22100 * logby10(height);
-    double final_bfp = 495 / bfp_denom - 450;
-    double calorieFemale = (370 + 21.6 * (1 - final_bfp) * weight) * 3 * 2;
+    double finalBfp = 495 / bfpDenom - 450;
+    double calorieFemale = (370 + 21.6 * (1 - finalBfp) * weight) * 3 * 2;
 
     return calorieFemale;
   }

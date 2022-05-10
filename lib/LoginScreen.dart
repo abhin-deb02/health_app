@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:health_app/loading.dart';
 import 'package:health_app/provider/sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
 
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -24,11 +23,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController passwordController = TextEditingController();
 
-  bool isLoading = false;
-
   @override
   Widget build(BuildContext context) {
-    return isLoading ? Loading() : Scaffold(
+    return Scaffold(
         backgroundColor: primaryColor,
         body: Container(
           padding: EdgeInsets.all(25),
@@ -71,15 +68,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 50,
                   onPressed: () async {
                     //Here goes the logic for Google SignIn
-
-                    setState(() => isLoading = true);
-
                     bool status = await AuthService().googleLogIn();
                     if (status == false)
                       print("issue - unable signing in");
-
-                    setState(() => isLoading = false);
-
                   },
                   color: Colors.blue,
                   child: Row(

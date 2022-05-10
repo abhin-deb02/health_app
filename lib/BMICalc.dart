@@ -26,9 +26,9 @@ class _BMICalcState extends State<BMICalc> {
     return Container(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(180),
+          preferredSize: const Size.fromHeight(180),
           child: AppBar(
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: const IconThemeData(color: Colors.black),
             elevation: 7,
             shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30))),
             backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
@@ -72,7 +72,7 @@ class _BMICalcState extends State<BMICalc> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 130,
                       child: TextField(
                         controller: heightController,
@@ -85,7 +85,7 @@ class _BMICalcState extends State<BMICalc> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             hintText: "eg., 170",
-                            hintStyle: TextStyle(fontStyle: FontStyle.italic),
+                            hintStyle: const TextStyle(fontStyle: FontStyle.italic),
                             filled: true,
                             fillColor: Colors.grey[200],
                             border: OutlineInputBorder(
@@ -150,7 +150,7 @@ class _BMICalcState extends State<BMICalc> {
                 SizedBox(
                     width: double.infinity,
                     child: Text(
-                        "$result",
+                        result,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: 40.0,
@@ -162,10 +162,10 @@ class _BMICalcState extends State<BMICalc> {
 
                 const SizedBox(height: 30.0),
 
-                Container(
+                SizedBox(
                     width: double.infinity,
                     child: Text(
-                        "$classify",
+                        classify,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: 30.0,
@@ -195,12 +195,13 @@ class _BMICalcState extends State<BMICalc> {
       cat = "Normal Weight";
     } else if (finalresult >= 25.0 && finalresult < 30.0) {
       cat = "Pre-Obesity";
-    } else if (finalresult >= 30.0 && finalresult < 35.0)
+    } else if (finalresult >= 30.0 && finalresult < 35.0) {
       cat = "Obesity Class I";
-    else if (finalresult >= 35.0 && finalresult < 40.0)
+    } else if (finalresult >= 35.0 && finalresult < 40.0) {
       cat = "Obesity Class II";
-    else if (finalresult >= 40.0)
+    } else if (finalresult >= 40.0) {
       cat = "Obesity Class III";
+    }
 
 
     setState(() {

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,7 +11,6 @@ import 'package:health_app/WaterIntake.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:health_app/loading.dart';
 import 'package:health_app/provider/sign_in.dart';
-import 'package:provider/provider.dart';
 
 import 'BMICalc.dart';
 import 'CalorieIntake.dart';
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Wrapper(),
+      home: const Wrapper(),
     );
 
   }
@@ -62,13 +62,15 @@ class Wrapper extends StatelessWidget {
         body: StreamBuilder(
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting)
-                return Loading();
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Loading();
+              }
 
-              if (!snapshot.hasData)
-                return LoginScreen();
+              if (!snapshot.hasData) {
+                return const LoginScreen();
+              }
 
-              return MainPage();
+              return const MainPage();
 
               /*
               else if (snapshot.hasData) {
@@ -237,7 +239,7 @@ class _MainPageState extends State<MainPage> {
                 ),
 
                 leading: IconButton(
-                  icon: Icon(Icons.menu),
+                  icon: const Icon(Icons.menu),
                   onPressed: () {
                     // here we'll make it call a sidebar modal
                     // but for now it just logs out the user [log-out button substitute]
@@ -350,9 +352,9 @@ class _MainPageState extends State<MainPage> {
                                    */
 
                                   IconButton(
-                                      padding: EdgeInsets.only(right: 5.0),
-                                      icon: Icon(Icons.task_alt_rounded, color: Colors.white),
-                                      constraints: BoxConstraints(),
+                                      padding: const EdgeInsets.only(right: 5.0),
+                                      icon: const Icon(Icons.task_alt_rounded, color: Colors.white),
+                                      constraints: const BoxConstraints(),
                                       onPressed: () async {
 
                                         // writing code to push the values in db
