@@ -4,12 +4,14 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_app/BodyFatCalculator.dart';
 import 'package:health_app/LoginScreen.dart';
 import 'package:health_app/OvulationCounter.dart';
 import 'package:health_app/WaterIntake.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:health_app/loading.dart';
+import 'package:health_app/login.dart';
 import 'package:health_app/provider/sign_in.dart';
 
 import 'BMICalc.dart';
@@ -67,7 +69,7 @@ class Wrapper extends StatelessWidget {
               }
 
               if (!snapshot.hasData) {
-                return const LoginScreen();
+                return const Login();
               }
 
               return const MainPage();
@@ -233,25 +235,31 @@ class _MainPageState extends State<MainPage> {
                       style: TextStyle(
                         fontSize: 25,
                         color: Colors.white,
+                        fontFamily: 'Quicksand',
                         fontWeight: FontWeight.bold,
                       )),
                   centerTitle: true,
                 ),
 
-                leading: IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () {
-                    // here we'll make it call a sidebar modal
-                    // but for now it just logs out the user [log-out button substitute]
+                leading: Transform.rotate(
+                  angle: 180 * 3.14 / 180,
+                  child: IconButton(
+                    //icon: const Icon(Icons.menu),
+                    icon: const Icon(Icons.logout, size: 28.0),
+                    tooltip: "Sign Out",
+                    onPressed: () {
+                      // here we'll make it call a sidebar modal
+                      // but for now it just logs out the user [log-out button substitute]
 
-                    /*
-                    final provider = Provider.of<AuthService>(context, listen: false);
-                    provider.logOut();
-                    */
+                      /*
+                      final provider = Provider.of<AuthService>(context, listen: false);
+                      provider.logOut();
+                      */
 
-                    AuthService().logOut();
+                      AuthService().logOut();
 
-                  },
+                    },
+                  ),
                 ),
 
                 actions: <Widget>[
