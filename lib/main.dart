@@ -19,8 +19,6 @@ import 'CalorieIntake.dart';
 
 Future main() async {
 
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
