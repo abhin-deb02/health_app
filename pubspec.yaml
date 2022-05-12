@@ -57,7 +57,7 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#fe7878"
-  image: assets/splash.png
+  image: assets/HealUp.png
   android: true
   ios: true
 
