@@ -13,9 +13,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
   bool hipIsVisible = false;
 
   double height = 0;
-  double neck = 0;
-  double waist = 0;
-  double hip = 0;
+  double age = 0;
   double weight = 0;
 
   // result variable
@@ -24,10 +22,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
   // declaring inputController to get input values
   TextEditingController heightInput = TextEditingController();
   TextEditingController weightInput = TextEditingController();
-  TextEditingController neckInput = TextEditingController();
-  TextEditingController waistInput = TextEditingController();
-  TextEditingController hipInput = TextEditingController();
-
+  TextEditingController ageInput = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -148,9 +143,9 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                           textAlign: TextAlign.center,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                              hintText: "eg., 68",
+                              hintText: "eg., 67",
                               hintStyle:
-                              const TextStyle(fontStyle: FontStyle.italic),
+                                  const TextStyle(fontStyle: FontStyle.italic),
                               filled: true,
                               fillColor: Colors.grey[200],
                               border: OutlineInputBorder(
@@ -163,56 +158,15 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                   ],
                 ),
 
-                // neck
                 const SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Flexible(
-                      flex: 3,
-                      child: Text("Neck\n(in cm)",
-                          style: TextStyle(fontSize: 18.0)),
-                    ),
-                    const Spacer(flex: 1),
-                    Flexible(
-                      flex: 5,
-                      child: SizedBox(
-                        width: 180,
-                        child: TextField(
-                          controller: neckInput,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w300,
-                            color: Colors.black,
-                          ),
-                          textAlign: TextAlign.center,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              hintText: "eg., 50",
-                              hintStyle: const TextStyle(
-                                  fontStyle: FontStyle.italic),
-                              filled: true,
-                              fillColor: Colors.grey[200],
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                borderSide: BorderSide.none,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
 
-                // waist
-                const SizedBox(height: 20.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Flexible(
                       flex: 3,
-                      child: Text("Waist\n(in cm)",
+                      child: Text("Age\n(in years)",
                           style: TextStyle(fontSize: 18.0)),
                     ),
                     const Spacer(flex: 1),
@@ -221,7 +175,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                       child: SizedBox(
                         width: 180,
                         child: TextField(
-                          controller: waistInput,
+                          controller: ageInput,
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w300,
@@ -231,8 +185,8 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               hintText: "eg., 96",
-                              hintStyle: const TextStyle(
-                                  fontStyle: FontStyle.italic),
+                              hintStyle:
+                                  const TextStyle(fontStyle: FontStyle.italic),
                               filled: true,
                               fillColor: Colors.grey[200],
                               border: OutlineInputBorder(
@@ -244,7 +198,6 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                     ),
                   ],
                 ),
-
 
                 // hip [if female]
 
@@ -260,35 +213,8 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                           flex: 3,
                           child: Container(
                               //color: Colors.red,
-                              child: const Text("Hip\n(in cm)",
+                              child: const Text("",
                                   style: TextStyle(fontSize: 18.0))),
-                        ),
-                        const Spacer(flex: 1),
-                        Flexible(
-                          flex: 5,
-                          child: SizedBox(
-                            width: 180,
-                            child: TextField(
-                              controller: hipInput,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.black,
-                              ),
-                              textAlign: TextAlign.center,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                  hintText: "eg., 92",
-                                  hintStyle: const TextStyle(
-                                      fontStyle: FontStyle.italic),
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    borderSide: BorderSide.none,
-                                  )),
-                            ),
-                          ),
                         ),
                       ],
                     ),
@@ -306,22 +232,15 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                     height: 60.0,
                     onPressed: () {
                       height = double.parse(heightInput.value.text);
-                      waist = double.parse(waistInput.value.text);
-                      neck = double.parse(neckInput.value.text);
-                      if (currentindex == 1) {
-                        hip = double.parse(hipInput.value.text);
-                      } else {
-                        hip = 0;
-                      }
+                      weight = double.parse(weightInput.value.text);
+                      age = double.parse(ageInput.value.text);
 
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => BodyFatResults(
                               index: currentindex,
                               height: height,
                               weight: weight,
-                              waist: waist,
-                              neck: neck,
-                              hip: hip)));
+                              age: age)));
                     },
                     child: const Text(
                       "Calculate Body Fat",
@@ -383,20 +302,16 @@ class _CalorieIntakeState extends State<CalorieIntake> {
 class BodyFatResults extends StatefulWidget {
   final double height;
   final double weight;
-  final double neck;
-  final double waist;
-  final double hip;
+  final double age;
   final int index;
 
-  const BodyFatResults(
-      {Key? key,
-      required this.index,
-      required this.height,
-      required this.weight,
-      required this.neck,
-      required this.waist,
-      required this.hip })
-      : super(key: key);
+  const BodyFatResults({
+    Key? key,
+    required this.index,
+    required this.height,
+    required this.weight,
+    required this.age,
+  }) : super(key: key);
 
   @override
   State<BodyFatResults> createState() => _BodyFatResultsState();
@@ -410,25 +325,20 @@ class _BodyFatResultsState extends State<BodyFatResults> {
 
   // hip calc essential functions here...
 
-  double logby10(double exp) {
-    return (log(exp) / ln10);
-  }
-
-  double calcCalorieMale(double waist, double neck, double height, weight) {
-    double bfpDenom =
-        1.0324 - 0.19077 * logby10(waist - neck) + 0.15456 * logby10(height);
-    double finalBfp = 495 / bfpDenom - 450;
-    double calorieMale = (370 + 21.6 * (1 - finalBfp) * weight) * 3 * 2.2;
-
+  double calcCalorieMale(double age, double height, weight) {
+    double calorieMale = (66.5 +
+            (6.3 * 0.453592 * weight) +
+            (4.7 * 2.54 * height) -
+            (6.8 * age)) *
+        1.2;
     return calorieMale;
   }
 
-  double calcCalorieFemale(double waist, double neck, double height, double hip, weight) {
-    double bfpDenom = 1.29579 -
-        0.35004 * logby10(waist + hip - neck) +
-        0.22100 * logby10(height);
-    double finalBfp = 495 / bfpDenom - 450;
-    double calorieFemale = (370 + 21.6 * (1 - finalBfp) * weight) * 3 * 2;
+  double calcCalorieFemale(double age, double height, weight) {
+    double calorieFemale = (665.1 +
+        (4.3 * 0.453592 * weight) +
+        (4.7 * 2.54 * height) -
+        (4.7 * age));
 
     return calorieFemale;
   }
@@ -436,12 +346,12 @@ class _BodyFatResultsState extends State<BodyFatResults> {
   void calculateAll() {
     setState(() {
       if (widget.index == 0) {
-        CalorieIntake = calcCalorieMale(widget.waist, widget.neck, widget.height, widget.weight);
+        CalorieIntake =
+            calcCalorieMale(widget.age, widget.height, widget.weight);
       } else if (widget.index == 1) {
-        CalorieIntake = calcCalorieFemale(
-            widget.waist, widget.neck, widget.height, widget.hip, widget.weight);
+        CalorieIntake =
+            calcCalorieFemale(widget.age, widget.height, widget.weight);
       }
-
     });
   }
 
@@ -524,7 +434,10 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                               children: [
                                 const SizedBox(height: 40.0),
                                 const Text("Calories needed: ",
-                                    style: TextStyle(fontSize: 20)),
+                                    style: TextStyle(fontSize: 40)),
+                                const SizedBox(height: 15.0),
+                                const Text("For maintaining weight: ",
+                                    style: TextStyle(fontSize: 25)),
                                 const SizedBox(height: 15.0),
                                 RichText(
                                     text: TextSpan(
@@ -532,13 +445,41 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                                             color: Colors.black),
                                         children: [
                                       TextSpan(
-                                          text: CalorieIntake.toStringAsFixed(2),
-                                          style:
-                                              const TextStyle(fontSize: 102)),
+                                          text:
+                                              CalorieIntake.toStringAsFixed(2),
+                                          style: const TextStyle(fontSize: 25)),
+                                    ])),
+                                const SizedBox(height: 15.0),
+                                const Text("Mild weight loss: ",
+                                    style: TextStyle(fontSize: 25)),
+                                const SizedBox(height: 15.0),
+                                RichText(
+                                    text: TextSpan(
+                                        style: const TextStyle(
+                                            color: Colors.black),
+                                        children: [
+                                      TextSpan(
+                                          text:
+                                          (CalorieIntake* 91/100).toStringAsFixed(2),
+                                          style: const TextStyle(fontSize: 25)),
+                                    ])),
+                                const SizedBox(height: 15.0),
+                                const Text("Extreme weight loss: ",
+                                    style: TextStyle(fontSize: 25)),
+                                const SizedBox(height: 15.0),
+                                RichText(
+                                    text: TextSpan(
+                                        style: const TextStyle(
+                                            color: Colors.black),
+                                        children: [
+                                      TextSpan(
+                                          text:
+                                          (CalorieIntake* 81/100).toStringAsFixed(2)  ,
+                                          style: const TextStyle(fontSize: 25)),
                                     ])),
                                 const SizedBox(height: 20.0),
                                 const Text(
-                                    "** calculated using Katch-McArdle Formula",
+                                    "** calculated using Harris-Benedict Formula",
                                     style: TextStyle(
                                         fontStyle: FontStyle.italic,
                                         fontSize: 15)),
@@ -549,7 +490,6 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                       ),
                     ]),
                     const SizedBox(height: 190),
-
                   ],
                 ),
               ),
