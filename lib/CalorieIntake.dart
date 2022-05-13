@@ -10,7 +10,6 @@ class CalorieIntake extends StatefulWidget {
 
 class _CalorieIntakeState extends State<CalorieIntake> {
   int currentindex = 0;
-  bool hipIsVisible = false;
 
   double height = 0;
   double age = 0;
@@ -166,7 +165,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                   children: [
                     const Flexible(
                       flex: 3,
-                      child: Text("Age\n(in years)",
+                      child: Text("Age\n(years)",
                           style: TextStyle(fontSize: 18.0)),
                     ),
                     const Spacer(flex: 1),
@@ -184,7 +183,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                           textAlign: TextAlign.center,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                              hintText: "eg., 96",
+                              hintText: "eg., 20",
                               hintStyle:
                                   const TextStyle(fontStyle: FontStyle.italic),
                               filled: true,
@@ -197,28 +196,6 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                       ),
                     ),
                   ],
-                ),
-
-                // hip [if female]
-
-                Visibility(
-                  visible: hipIsVisible,
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Flexible(
-                          flex: 3,
-                          child: Container(
-                              //color: Colors.red,
-                              child: const Text("",
-                                  style: TextStyle(fontSize: 18.0))),
-                        ),
-                      ],
-                    ),
-                  ),
                 ),
 
                 const SizedBox(height: 50.0),
@@ -243,7 +220,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                               age: age)));
                     },
                     child: const Text(
-                      "Calculate Body Fat",
+                      "Calculate Calorie Intake",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     color: currentindex == 0
@@ -262,12 +239,6 @@ class _CalorieIntakeState extends State<CalorieIntake> {
   void changeIndex(int index) {
     setState(() {
       currentindex = index;
-
-      if (currentindex == 1) {
-        hipIsVisible = true;
-      } else {
-        hipIsVisible = false;
-      }
     });
   }
 
@@ -367,11 +338,12 @@ class _BodyFatResultsState extends State<BodyFatResults> {
         body: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                    begin: Alignment.center,
+                    end: Alignment.bottomCenter,
+                    stops: [0.3, 1.0],
                     colors: [
-                  Colors.black.withOpacity(0.85),
-                  Colors.black.withOpacity(0.9),
+                      (widget.index == 1) ? Colors.redAccent.withOpacity(0.85) :Colors.blue.withOpacity(0.9),
+                      (widget.index == 1) ? Colors.black87.withOpacity(0.9) : Colors.black.withOpacity(0.9),
                 ])),
             child: CustomScrollView(slivers: [
               const SliverAppBar(
@@ -384,6 +356,7 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                 snap: false,
                 floating: false,
                 forceElevated: true,
+                iconTheme: IconThemeData(color: Colors.black),
                 elevation: 10,
                 foregroundColor: Colors.white,
                 expandedHeight: 120,
@@ -435,7 +408,7 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                                 const SizedBox(height: 40.0),
                                 const Text("Calories needed: ",
                                     style: TextStyle(fontSize: 40)),
-                                const SizedBox(height: 15.0),
+                                const SizedBox(height: 35.0),
                                 const Text("For maintaining weight: ",
                                     style: TextStyle(fontSize: 25)),
                                 const SizedBox(height: 15.0),
