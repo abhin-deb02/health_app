@@ -297,19 +297,14 @@ class _BodyFatResultsState extends State<BodyFatResults> {
   // hip calc essential functions here...
 
   double calcCalorieMale(double age, double height, weight) {
-    double calorieMale = (66.5 +
-            (6.3 * 0.453592 * weight) +
-            (4.7 * 2.54 * height) -
-            (6.8 * age)) *
-        1.2;
+    double calorieMale =
+        (13.397 * weight + 4.799 * height - 5.677 * age + 88.362) * 1.2;
     return calorieMale;
   }
 
   double calcCalorieFemale(double age, double height, weight) {
-    double calorieFemale = (665.1 +
-        (4.3 * 0.453592 * weight) +
-        (4.7 * 2.54 * height) -
-        (4.7 * age));
+    double calorieFemale =
+        (9.247 * weight + 3.098 * height - 4.330 * age + 447.593) * 1.2;
 
     return calorieFemale;
   }
@@ -340,10 +335,17 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                 gradient: LinearGradient(
                     begin: Alignment.center,
                     end: Alignment.bottomCenter,
-                    stops: [0.3, 1.0],
+                    stops: [
+                  0.3,
+                  1.0
+                ],
                     colors: [
-                      (widget.index == 1) ? Colors.redAccent.withOpacity(0.85) :Colors.blue.withOpacity(0.9),
-                      (widget.index == 1) ? Colors.black87.withOpacity(0.9) : Colors.black.withOpacity(0.9),
+                  (widget.index == 1)
+                      ? Colors.redAccent.withOpacity(0.85)
+                      : Colors.blue.withOpacity(0.9),
+                  (widget.index == 1)
+                      ? Colors.black87.withOpacity(0.9)
+                      : Colors.black.withOpacity(0.9),
                 ])),
             child: CustomScrollView(slivers: [
               const SliverAppBar(
@@ -432,8 +434,8 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                                             color: Colors.black),
                                         children: [
                                       TextSpan(
-                                          text:
-                                          (CalorieIntake* 91/100).toStringAsFixed(2),
+                                          text: (CalorieIntake * 91 / 100)
+                                              .toStringAsFixed(2),
                                           style: const TextStyle(fontSize: 25)),
                                     ])),
                                 const SizedBox(height: 15.0),
@@ -446,8 +448,8 @@ class _BodyFatResultsState extends State<BodyFatResults> {
                                             color: Colors.black),
                                         children: [
                                       TextSpan(
-                                          text:
-                                          (CalorieIntake* 81/100).toStringAsFixed(2)  ,
+                                          text: (CalorieIntake * 81 / 100)
+                                              .toStringAsFixed(2),
                                           style: const TextStyle(fontSize: 25)),
                                     ])),
                                 const SizedBox(height: 20.0),

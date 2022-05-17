@@ -161,7 +161,7 @@ class _WaterIntakeState extends State<WaterIntake> {
   }
 
   void waterIntakeCalc(double height, double weight) {
-    double finalResult = workOut + 0.35 + height / 30;
+    double finalResult = (workOut + 0.35 + weight) / 30;
     String intake = finalResult.toStringAsFixed(2);
 
     setState(() {

@@ -19,14 +19,11 @@ import 'BMICalc.dart';
 import 'CalorieIntake.dart';
 
 Future main() async {
-
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -52,7 +49,6 @@ class MyApp extends StatelessWidget {
       ),
       home: const Wrapper(),
     );
-
   }
 }
 
@@ -64,20 +60,20 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: StreamBuilder(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Loading();
-              }
+      body: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Loading();
+          }
 
-              if (!snapshot.hasData) {
-                return const Login();
-              }
+          if (!snapshot.hasData) {
+            return const Login();
+          }
 
-              return const MainPage();
+          return const MainPage();
 
-              /*
+          /*
               else if (snapshot.hasData) {
                 return MainPage();
               }
@@ -88,12 +84,11 @@ class Wrapper extends StatelessWidget {
                 return LoginScreen();
               }
                */
-            },
-        ),
+        },
+      ),
     );
   }
 }
-
 
 // end of wrapper widget
 
@@ -124,31 +119,26 @@ class _MainPageState extends State<MainPage> {
   late Timer _dayStatePeriodic;
   late Timer _dayStateOneShot;
 
-
   // datetime object
   DateTime t = DateTime.now();
 
   // function to get user name
-  void getUserName()
-  {
-    setState(() { name = user!.displayName!.split(' ')[0]; });
+  void getUserName() {
+    setState(() {
+      name = user!.displayName!.split(' ')[0];
+    });
   }
 
   // function to determine time-phase of day
-  void changeDayState()
-  {
+  void changeDayState() {
     int hour = t.hour;
     if (hour >= 3 && hour < 12) {
       day_state = "Morning";
-    }
-    else if (hour >= 12 && hour < 16) {
+    } else if (hour >= 12 && hour < 16) {
       day_state = "Afternoon";
-    }
-    else if (hour >= 16 && hour < 22) {
+    } else if (hour >= 16 && hour < 22) {
       day_state = "Evening";
-    }
-    else
-    {
+    } else {
       day_state = "Night";
     }
 
@@ -156,19 +146,21 @@ class _MainPageState extends State<MainPage> {
   }
 
   @override
-  void initState()
-  {
+  void initState() {
     // start it once at the very beginning [one-shot]
-    _dayStateOneShot = Timer(const Duration(seconds: 0), () {changeDayState(); getUserName(); });
+    _dayStateOneShot = Timer(const Duration(seconds: 0), () {
+      changeDayState();
+      getUserName();
+    });
     // periodic timer function call, so that greeting updates as per clock time
-    _dayStatePeriodic = Timer.periodic(const Duration(seconds: 30), (timer) => changeDayState());
+    _dayStatePeriodic = Timer.periodic(
+        const Duration(seconds: 30), (timer) => changeDayState());
 
     super.initState();
   }
 
   @override
-  void dispose()
-  {
+  void dispose() {
     _dayStatePeriodic.cancel();
     _dayStateOneShot.cancel();
     super.dispose();
@@ -183,9 +175,7 @@ class _MainPageState extends State<MainPage> {
     double scrWidth = MediaQuery.of(context).size.width;
     double scrHeight = MediaQuery.of(context).size.height;
 
-
     return Scaffold(
-
       /*
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
@@ -214,7 +204,7 @@ class _MainPageState extends State<MainPage> {
       body: Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
-          begin: Alignment.topCenter,     // changed from topLeft to topCenter
+          begin: Alignment.topCenter, // changed from topLeft to topCenter
           end: Alignment.bottomLeft,
           colors: [
             Colors.redAccent,
@@ -243,7 +233,6 @@ class _MainPageState extends State<MainPage> {
                       )),
                   centerTitle: true,
                 ),
-
                 leading: Transform.rotate(
                   angle: 180 * 3.14 / 180,
                   child: IconButton(
@@ -260,11 +249,9 @@ class _MainPageState extends State<MainPage> {
                       */
 
                       AuthService().logOut();
-
                     },
                   ),
                 ),
-
                 actions: <Widget>[
                   /*
                   IconButton(
@@ -278,83 +265,87 @@ class _MainPageState extends State<MainPage> {
                   CircleAvatar(
                     radius: 30,
                     backgroundColor: Colors.transparent,
-                    child: CircleAvatar(backgroundImage: NetworkImage(user!.photoURL!)),
+                    child: CircleAvatar(
+                        backgroundImage: NetworkImage(user!.photoURL!)),
                   ),
-                ]
-            ),
+                ]),
             SliverToBoxAdapter(
-              child:
-                  ClipPath(
-                    clipper: MyClipper(),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.redAccent.withOpacity(0.15),
-                            Colors.redAccent.withOpacity(0.4),
-                          ],
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
+              child: ClipPath(
+                clipper: MyClipper(),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.redAccent.withOpacity(0.15),
+                        Colors.redAccent.withOpacity(0.4),
+                      ],
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
                         horizontal: scrWidth / 40, vertical: scrHeight / 14),
-                        child: Column(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0, right: 20),
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20.0, right: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Hi $name,",
-                                        style: const TextStyle(fontSize: 30, color: Colors.white)),
-                                    SizedBox(height: scrHeight / 70),
-                                    Text("Good $day_state, how do you feel?",
-                                        style: const TextStyle(fontSize: 20, color: Colors.white)),
-                                    SizedBox(height: scrHeight / 35),
-                                  ],
+                              Text("Hi $name,",
+                                  style: const TextStyle(
+                                      fontSize: 30, color: Colors.white)),
+                              SizedBox(height: scrHeight / 70),
+                              Text("Good $day_state, how do you feel?",
+                                  style: const TextStyle(
+                                      fontSize: 20, color: Colors.white)),
+                              SizedBox(height: scrHeight / 35),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SizedBox(
+                              child: Text(
+                                //'🙁',
+                                emojis[value.toInt() - 1],
+                                style: const TextStyle(fontSize: 25),
+                              ),
+                            ),
+                            Expanded(
+                              child: SizedBox(
+                                child: SliderTheme(
+                                  data: SliderThemeData(
+                                    trackHeight: 16,
+                                    thumbShape: const RoundSliderThumbShape(
+                                        enabledThumbRadius: 12.0),
+                                    valueIndicatorTextStyle: const TextStyle(
+                                        color: Colors.redAccent),
+                                    valueIndicatorColor:
+                                        Colors.white.withOpacity(0.94),
+                                  ),
+                                  child: Slider(
+                                    value: value,
+                                    min: 1.0,
+                                    max: 9.0,
+                                    divisions: 8,
+                                    label: labels[value.toInt() - 1],
+                                    activeColor: Colors.redAccent.shade200,
+                                    inactiveColor: Colors.white38,
+                                    //label: value.round().toString(),
+                                    onChanged: (double value) => setState(() {
+                                      this.value = value;
+                                      print(value);
+                                    }),
+                                  ),
                                 ),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  SizedBox(
-                                    child: Text(//'🙁',
-                                      emojis[value.toInt() - 1],
-                                      style: const TextStyle(fontSize: 25),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: SizedBox(
-                                      child: SliderTheme(
-                                        data: SliderThemeData(
-                                          trackHeight: 16,
-                                          thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
-                                          valueIndicatorTextStyle: const TextStyle(color: Colors.redAccent),
-                                          valueIndicatorColor: Colors.white.withOpacity(0.94),
-                                        ),
-                                        child: Slider(
-                                          value: value,
-                                          min: 1.0,
-                                          max: 9.0,
-                                          divisions: 8,
-                                          label: labels[value.toInt() - 1],
-                                          activeColor: Colors.redAccent.shade200,
-                                          inactiveColor: Colors.white38,
-                                          //label: value.round().toString(),
-                                          onChanged: (double value) => setState(() {
-                                            this.value = value;
-                                            print(value);
-                                          }
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                            ),
 
-                                  /*
+                            /*
                                   const SizedBox(
                                   child: Text('😃',
                                     style: TextStyle(fontSize: 25),
@@ -362,36 +353,40 @@ class _MainPageState extends State<MainPage> {
                                   ),
                                    */
 
-                                  IconButton(
-                                      padding: const EdgeInsets.only(right: 5.0),
-                                      icon: const Icon(Icons.task_alt_rounded, color: Colors.white),
-                                      constraints: const BoxConstraints(),
-                                      onPressed: () async {
+                            IconButton(
+                              padding: const EdgeInsets.only(right: 5.0),
+                              icon: const Icon(Icons.task_alt_rounded,
+                                  color: Colors.white),
+                              constraints: const BoxConstraints(),
+                              onPressed: () async {
+                                // writing code to push the values in db
 
-                                        // writing code to push the values in db
+                                DateTime objTime = DateTime.now();
 
-                                        DateTime objTime = DateTime.now();
+                                String date = objTime.toString().split(' ')[0];
+                                String datapoint = objTime.toString() +
+                                    "," +
+                                    value.toInt().toString();
 
-                                        String date = objTime.toString().split(' ')[0];
-                                        String datapoint = objTime.toString() + "," + value.toInt().toString();
-
-                                        DocumentReference docRef = FirebaseFirestore.instance.collection('userData').doc(user!.uid);
-                                        docRef.update({
-                                          'date' : FieldValue.arrayUnion([date]),
-                                          'dtime,points' : FieldValue.arrayUnion([datapoint]),
-                                        });
-
-                                      },
-                                  )
-
-                                ],
-                              ),
-                              const SizedBox(height: 5),
-                            ],
+                                DocumentReference docRef = FirebaseFirestore
+                                    .instance
+                                    .collection('userData')
+                                    .doc(user!.uid);
+                                docRef.update({
+                                  'date': FieldValue.arrayUnion([date]),
+                                  'dtime,points':
+                                      FieldValue.arrayUnion([datapoint]),
+                                });
+                              },
+                            )
+                          ],
                         ),
-                      ),
+                        const SizedBox(height: 5),
+                      ],
                     ),
                   ),
+                ),
+              ),
 
               // end of code
             ),
@@ -409,26 +404,62 @@ class _MainPageState extends State<MainPage> {
                             SizedBox(
                               width: 150.0,
                               height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const BodyFatCalculator(),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(0.0, 2.0), //(x,y)
+                                        blurRadius: 20.0,
+                                      ),
+                                    ],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.white,
+                                        Colors.redAccent
+                                            .withBlue(180)
+                                            .withGreen(180),
+                                      ],
+                                    )),
+                                child: Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    IconButton(
+                                      icon: Image.asset(
+                                          'assets/icons/body-fat.png'),
+                                      iconSize: 80,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const BodyFatCalculator(),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  //primary: Colors.white10.withOpacity(0),
-                                  //onPrimary: Colors.white,
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
+                                    RichText(
+                                      text: TextSpan(
+                                        style:
+                                            DefaultTextStyle.of(context).style,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: "Body Fat",
+                                            style: TextStyle(
+                                                color: Colors.redAccent
+                                                    .withOpacity(1.0),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                child: const Text('Body Fat'),
                               ),
                             ),
                             const SizedBox(
@@ -438,24 +469,61 @@ class _MainPageState extends State<MainPage> {
                             SizedBox(
                               width: 150.0,
                               height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const BMICalc(),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(0.0, 2.0), //(x,y)
+                                        blurRadius: 20.0,
+                                      ),
+                                    ],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.white,
+                                        Colors.redAccent
+                                            .withBlue(180)
+                                            .withGreen(180),
+                                      ],
+                                    )),
+                                child: Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    IconButton(
+                                      icon: Image.asset('assets/icons/bmi.png'),
+                                      iconSize: 80,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const BMICalc(),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
+                                    RichText(
+                                      text: TextSpan(
+                                        style:
+                                            DefaultTextStyle.of(context).style,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: "BMI Calculator",
+                                            style: TextStyle(
+                                                color: Colors.redAccent
+                                                    .withOpacity(1.0),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                child: const Text('BMI Calculator'),
                               ),
                             ),
                           ],
@@ -466,24 +534,62 @@ class _MainPageState extends State<MainPage> {
                             SizedBox(
                               width: 150.0,
                               height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const OvulationCounter(),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(0.0, 2.0), //(x,y)
+                                        blurRadius: 20.0,
+                                      ),
+                                    ],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.white,
+                                        Colors.redAccent
+                                            .withBlue(180)
+                                            .withGreen(180),
+                                      ],
+                                    )),
+                                child: Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    IconButton(
+                                      icon: Image.asset(
+                                          'assets/icons/menstrual-cycle.png'),
+                                      iconSize: 80,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const OvulationCounter(),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
+                                    RichText(
+                                      text: TextSpan(
+                                        style:
+                                            DefaultTextStyle.of(context).style,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: "Ovulation Tracker",
+                                            style: TextStyle(
+                                                color: Colors.redAccent
+                                                    .withOpacity(1.0),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                child: const Text('Ovulation Tracker'),
                               ),
                             ),
                             const SizedBox(
@@ -493,24 +599,61 @@ class _MainPageState extends State<MainPage> {
                             SizedBox(
                               width: 150.0,
                               height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const WaterIntake(),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(0.0, 2.0), //(x,y)
+                                        blurRadius: 20.0,
+                                      ),
+                                    ],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.white,
+                                        Colors.redAccent
+                                            .withBlue(180)
+                                            .withGreen(180),
+                                      ],
+                                    )),
+                                child: Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    IconButton(
+                                      icon: Image.asset('assets/icons/water-bottle.png'),
+                                      iconSize: 80,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const WaterIntake(),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
+                                    RichText(
+                                      text: TextSpan(
+                                        style:
+                                            DefaultTextStyle.of(context).style,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: "Water Intake",
+                                            style: TextStyle(
+                                                color: Colors.redAccent
+                                                    .withOpacity(1.0),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                child: const Text('Water Intake'),
                               ),
                             ),
                           ],
@@ -521,24 +664,62 @@ class _MainPageState extends State<MainPage> {
                             SizedBox(
                               width: 150.0,
                               height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const CalorieIntake(),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(0.0, 2.0), //(x,y)
+                                        blurRadius: 20.0,
+                                      ),
+                                    ],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.white,
+                                        Colors.redAccent
+                                            .withBlue(180)
+                                            .withGreen(180),
+                                      ],
+                                    )),
+                                child: Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    IconButton(
+                                      icon: Image.asset(
+                                          'assets/icons/calories-calculator.png'),
+                                      iconSize: 80,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CalorieIntake(),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
+                                    RichText(
+                                      text: TextSpan(
+                                        style:
+                                            DefaultTextStyle.of(context).style,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: "Calorie Intake",
+                                            style: TextStyle(
+                                                color: Colors.redAccent
+                                                    .withOpacity(1.0),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                child: const Text('Calorie Intake'),
                               ),
                             ),
                             const SizedBox(
@@ -548,26 +729,61 @@ class _MainPageState extends State<MainPage> {
                             SizedBox(
                               width: 150.0,
                               height: 150.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const HealthGraph(),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(0.0, 2.0), //(x,y)
+                                        blurRadius: 20.0,
+                                      ),
+                                    ],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.white,
+                                        Colors.redAccent
+                                            .withBlue(180)
+                                            .withGreen(180),
+                                      ],
+                                    )),
+                                child: Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    IconButton(
+                                      icon: Image.asset('assets/icons/mental-health.png'),
+                                      iconSize: 80,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const HealthGraph(),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.deepPurpleAccent,
-                                  onPrimary: Colors.white,
-                                  elevation: 12,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
+                                    RichText(
+                                      text: TextSpan(
+                                        style:
+                                            DefaultTextStyle.of(context).style,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: "Mental Health",
+                                            style: TextStyle(
+                                                color: Colors.redAccent
+                                                    .withOpacity(1.0),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                child: const Text('Mental Health Record'),
                               ),
                             ),
                           ],
@@ -586,8 +802,7 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-class MyClipper extends CustomClipper<Path>
-{
+class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
@@ -614,8 +829,7 @@ class MyClipper extends CustomClipper<Path>
   }
 
   @override
-  bool shouldReclip(CustomClipper<Path> oldClipper)
-  {
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
     return true;
   }
 }
