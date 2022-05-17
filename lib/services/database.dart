@@ -15,4 +15,10 @@ class DatabaseServices {
       'dtime,points' : datapoints,
     });
   }
+
+  Stream<DocumentSnapshot> get userData
+  {
+    return userDataColl.doc(uid).snapshots();
+  }
+
 }
