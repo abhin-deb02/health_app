@@ -31,11 +31,7 @@ class _WaterIntakeState extends State<WaterIntake> {
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30))),
           backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.settings, color: Colors.black))
-          ],
+          actions: [],
           flexibleSpace: const FlexibleSpaceBar(
             title: Text("Water Intake Calculator",
                 style: TextStyle(color: Colors.redAccent, fontSize: 28)),
