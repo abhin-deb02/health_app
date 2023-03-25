@@ -103,9 +103,8 @@ class _LoginState extends State<Login> {
                           SizedBox(height: height * 0.12),
                           ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                              minimumSize: Size(270, 55),
+                              minimumSize: Size(270, 55), backgroundColor: Colors.redAccent.withGreen(100).withBlue(100),
                               elevation: 10.0,
-                              primary: Colors.redAccent.withGreen(100).withBlue(100),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               )

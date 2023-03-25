@@ -113,7 +113,7 @@ class _WaterIntakeState extends State<WaterIntake> {
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 35),
-                child: FlatButton(
+                child: MaterialButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0)),
                   height: 60.0,

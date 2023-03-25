@@ -124,7 +124,7 @@ class _BMICalcState extends State<BMICalc> {
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 35),
-                  child: FlatButton(
+                  child: MaterialButton(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
                     height: 60.0,
                     onPressed: () {

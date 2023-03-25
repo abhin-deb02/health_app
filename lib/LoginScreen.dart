@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:health_app/provider/sign_in.dart';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -91,26 +90,26 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 
-  _buildTextField(
-      TextEditingController controller, IconData icon, String labelText) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-          color: secondaryColor, border: Border.all(color: Colors.blue)),
-      child: TextField(
-        controller: controller,
-        style: const TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-            labelText: labelText,
-            labelStyle: const TextStyle(color: Colors.white),
-            icon: Icon(
-              icon,
-              color: Colors.white,
-            ),
-            // prefix: Icon(icon),
-            border: InputBorder.none),
-      ),
-    );
-  }
+  // _buildTextField(
+  //     TextEditingController controller, IconData icon, String labelText) {
+  //   return Container(
+  //     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+  //     decoration: BoxDecoration(
+  //         color: secondaryColor, border: Border.all(color: Colors.blue)),
+  //     child: TextField(
+  //       controller: controller,
+  //       style: const TextStyle(color: Colors.white),
+  //       decoration: InputDecoration(
+  //           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+  //           labelText: labelText,
+  //           labelStyle: const TextStyle(color: Colors.white),
+  //           icon: Icon(
+  //             icon,
+  //             color: Colors.white,
+  //           ),
+  //           // prefix: Icon(icon),
+  //           border: InputBorder.none),
+  //     ),
+  //   );
+  // }
 }

@@ -97,7 +97,7 @@ class _OvulationCounterState extends State<OvulationCounter> {
 
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
-                      child: RaisedButton(
+                      child: MaterialButton(
                         color: Colors.grey[100],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
@@ -176,7 +176,7 @@ class _OvulationCounterState extends State<OvulationCounter> {
 
                     const SizedBox(height: 80),
 
-                    RaisedButton(
+                    MaterialButton(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                         elevation: 7,
                         color: Colors.redAccent.shade200,

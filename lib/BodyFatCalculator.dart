@@ -289,9 +289,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(horizontal: 35),
-                    child: FlatButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-                      height: 60.0,
+                    child:   MaterialButton(
                       onPressed: () {
 
                         height = double.parse(heightInput.value.text);
@@ -307,13 +305,16 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => BodyFatResults(index: currentindex, height: height, waist: waist, neck: neck, hip: hip))
                         );
-                      },
+                      },                      height: 60.0,
+                      padding: EdgeInsets.all(0),
                       child: const Text(
                         "Calculate Body Fat",
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                       color: currentindex == 0 ? Colors.lightBlueAccent : Colors.redAccent,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
                     ),
+
                   ),
                 ],
               ),
@@ -347,7 +348,7 @@ class _BodyFatCalculatorState extends State<BodyFatCalculator> {
           margin: const EdgeInsets.symmetric(horizontal: 12.0),
           height: 60.0,
 
-          child: FlatButton(
+          child: MaterialButton(
             // color of button needs to change in function if it is selected [or otherwise]
             // if button = pressed -> currentindex = index of button, so we will assign a custom color
             // else, it will be grey

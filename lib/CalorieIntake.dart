@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 class CalorieIntake extends StatefulWidget {
   const CalorieIntake({Key? key}) : super(key: key);
@@ -203,7 +202,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 35),
-                  child: FlatButton(
+                  child: MaterialButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
                     height: 60.0,
@@ -248,7 +247,7 @@ class _CalorieIntakeState extends State<CalorieIntake> {
         child: Container(
       margin: const EdgeInsets.symmetric(horizontal: 12.0),
       height: 60.0,
-      child: FlatButton(
+      child: MaterialButton(
         // color of button needs to change in function if it is selected [or otherwise]
         // if button = pressed -> currentindex = index of button, so we will assign a custom color
         // else, it will be grey
