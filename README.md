@@ -32,4 +32,14 @@ Minor updates and bug fixes have been provided post the Play Store release to en
   
 - **Firebase:** A mobile and web application development platform that provides a real-time NoSQL database, authentication, and more.
 
+## Preview Screen Shots
 
+- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(1).jpeg)
+
+- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(2).jpeg)
+
+- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(3).jpeg)
+
+- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(4).jpeg)
+
+- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(5).jpeg)
