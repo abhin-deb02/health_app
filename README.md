@@ -34,12 +34,12 @@ Minor updates and bug fixes have been provided post the Play Store release to en
 
 ## Preview Screen Shots
 
-- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(1).jpeg)
+- ![Image 1](images/PreviewImg (1).jpeg)
 
-- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(2).jpeg)
+- ![Image 2](images/PreviewImg (2).jpeg)
 
-- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(3).jpeg)
+- ![Image 3](images/PreviewImg (3).jpeg)
 
-- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(4).jpeg)
+- ![Image 4](images/PreviewImg (4).jpeg)
 
-- ![Alt Text](https://github.com/abhin-deb02/health_app/blob/main/images/PreviewImg%20(5).jpeg)
+- ![Image 5](images/PreviewImg (5).jpeg)
