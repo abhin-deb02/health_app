@@ -32,14 +32,4 @@ Minor updates and bug fixes have been provided post the Play Store release to en
   
 - **Firebase:** A mobile and web application development platform that provides a real-time NoSQL database, authentication, and more.
 
-## Preview Screen Shots
 
-- ![Image 1](images/PreviewImg (1).jpeg)
-
-- ![Image 2](images/PreviewImg (2).jpeg)
-
-- ![Image 3](images/PreviewImg (3).jpeg)
-
-- ![Image 4](images/PreviewImg (4).jpeg)
-
-- ![Image 5](images/PreviewImg (5).jpeg)
